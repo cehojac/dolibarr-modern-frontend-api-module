@@ -1,0 +1,54 @@
+# Dolibarr language file - Source file is UTF-8 encoded
+
+CHARSET = UTF-8
+
+# Module labels 'ModuleXXXName'
+ModuleDolibarmodernfrontendName = Frontend Moderno
+# Module descriptions 'ModuleXXXDesc'
+ModuleDolibarmodernfrontendDesc = API moderna para gestión de intervenciones y tickets
+
+# Admin page
+DolibarmodernfrontendSetup = Configuración del Frontend Moderno
+Settings = Configuración
+DolibarmodernfrontendSetupPage = Página de configuración del módulo Frontend Moderno
+
+# About page
+About = Acerca de
+DolibarmodernfrontendAbout = Acerca del Frontend Moderno
+DolibarmodernfrontendAboutPage = Página acerca del Frontend Moderno
+
+# Menu
+InterventionTicketLinks = Vinculaciones Intervención-Ticket
+APIDocumentation = Documentación API
+FrontendModerno = Frontend Moderno
+GestionDeVinculaciones = Gestión de Vinculaciones
+
+# Common
+Ticket = Ticket
+Intervention = Intervención
+LinkType = Tipo de Vinculación
+Description = Descripción
+CreateLink = Crear Vinculación
+SelectTicket = Seleccionar Ticket
+SelectIntervention = Seleccionar Intervención
+Manual = Manual
+Automatic = Automático
+System = Sistema
+
+# Messages
+LinkCreatedSuccessfully = Vinculación creada exitosamente
+LinkRemovedSuccessfully = Vinculación eliminada exitosamente
+LinkAlreadyExists = La vinculación ya existe
+NoInterventionsFound = No se encontraron intervenciones para este ticket
+NoTicketsFound = No se encontraron tickets para esta intervención
+ExistingLinks = Vinculaciones Existentes
+NoLinksFound = No se encontraron vinculaciones
+Unlink = Desvincular
+Client = Cliente
+Actions = Acciones
+
+# Permissions
+Permission105003read = Leer vinculaciones de intervenciones y tickets
+Permission105003write = Crear/modificar vinculaciones de intervenciones y tickets
+Permission105003delete = Eliminar vinculaciones de intervenciones y tickets
+Permission105003admin = Administrar módulo de frontend moderno
