@@ -2,14 +2,14 @@
 
 ## 📧 Nuevo Endpoint v1.2.3
 
-El módulo **dolibarmodernfrontend** ahora incluye un endpoint completo para obtener todas las plantillas de correo electrónico configuradas en Dolibarr.
+El módulo **dolibarrmodernfrontend** ahora incluye un endpoint completo para obtener todas las plantillas de correo electrónico configuradas en Dolibarr.
 
 ---
 
 ## 🎯 Endpoint
 
 ```
-GET /api/index.php/dolibarmodernfrontend/emailtemplates
+GET /api/index.php/dolibarrmodernfrontend/emailtemplates
 ```
 
 ---
@@ -29,7 +29,7 @@ Obtiene todas las plantillas de correo electrónico de Dolibarr desde la tabla `
 ## 🔐 Permisos Requeridos
 
 - Permisos de administrador **O**
-- Permisos de lectura del módulo `dolibarmodernfrontend`
+- Permisos de lectura del módulo `dolibarrmodernfrontend`
 
 ---
 
@@ -49,35 +49,35 @@ Obtiene todas las plantillas de correo electrónico de Dolibarr desde la tabla `
 ### 1. Obtener todas las plantillas
 
 ```bash
-curl -X GET "http://localhost/api/index.php/dolibarmodernfrontend/emailtemplates" \
+curl -X GET "http://localhost/api/index.php/dolibarrmodernfrontend/emailtemplates" \
   -H "DOLAPIKEY: your_api_key_here"
 ```
 
 ### 2. Filtrar por tipo (tickets)
 
 ```bash
-curl -X GET "http://localhost/api/index.php/dolibarmodernfrontend/emailtemplates?type_template=ticket" \
+curl -X GET "http://localhost/api/index.php/dolibarrmodernfrontend/emailtemplates?type_template=ticket" \
   -H "DOLAPIKEY: your_api_key_here"
 ```
 
 ### 3. Filtrar por idioma (español)
 
 ```bash
-curl -X GET "http://localhost/api/index.php/dolibarmodernfrontend/emailtemplates?lang=es_ES" \
+curl -X GET "http://localhost/api/index.php/dolibarrmodernfrontend/emailtemplates?lang=es_ES" \
   -H "DOLAPIKEY: your_api_key_here"
 ```
 
 ### 4. Solo plantillas habilitadas
 
 ```bash
-curl -X GET "http://localhost/api/index.php/dolibarmodernfrontend/emailtemplates?enabled=1" \
+curl -X GET "http://localhost/api/index.php/dolibarrmodernfrontend/emailtemplates?enabled=1" \
   -H "DOLAPIKEY: your_api_key_here"
 ```
 
 ### 5. Filtros combinados
 
 ```bash
-curl -X GET "http://localhost/api/index.php/dolibarmodernfrontend/emailtemplates?type_template=ticket&lang=es_ES&enabled=1" \
+curl -X GET "http://localhost/api/index.php/dolibarrmodernfrontend/emailtemplates?type_template=ticket&lang=es_ES&enabled=1" \
   -H "DOLAPIKEY: your_api_key_here"
 ```
 
@@ -145,11 +145,11 @@ curl -X GET "http://localhost/api/index.php/dolibarmodernfrontend/emailtemplates
   "usage_info": {
     "description": "Email templates can be filtered by type, language, enabled status, and privacy",
     "filter_examples": {
-      "by_type": "/api/index.php/dolibarmodernfrontend/emailtemplates?type_template=ticket",
-      "by_lang": "/api/index.php/dolibarmodernfrontend/emailtemplates?lang=es_ES",
-      "enabled_only": "/api/index.php/dolibarmodernfrontend/emailtemplates?enabled=1",
-      "public_only": "/api/index.php/dolibarmodernfrontend/emailtemplates?private=0",
-      "combined": "/api/index.php/dolibarmodernfrontend/emailtemplates?type_template=ticket&lang=es_ES&enabled=1"
+      "by_type": "/api/index.php/dolibarrmodernfrontend/emailtemplates?type_template=ticket",
+      "by_lang": "/api/index.php/dolibarrmodernfrontend/emailtemplates?lang=es_ES",
+      "enabled_only": "/api/index.php/dolibarrmodernfrontend/emailtemplates?enabled=1",
+      "public_only": "/api/index.php/dolibarrmodernfrontend/emailtemplates?private=0",
+      "combined": "/api/index.php/dolibarrmodernfrontend/emailtemplates?type_template=ticket&lang=es_ES&enabled=1"
     },
     "variables_info": "The 'variables' field lists all template variables found in the format __VARIABLE__"
   }
@@ -231,7 +231,7 @@ Las plantillas de Dolibarr usan variables en formato `__VARIABLE__`:
 ### 1. Selector de Plantillas en Frontend
 ```javascript
 // Obtener plantillas de tickets en español
-fetch('/api/index.php/dolibarmodernfrontend/emailtemplates?type_template=ticket&lang=es_ES&enabled=1', {
+fetch('/api/index.php/dolibarrmodernfrontend/emailtemplates?type_template=ticket&lang=es_ES&enabled=1', {
   headers: {
     'DOLAPIKEY': 'your_api_key'
   }
@@ -253,7 +253,7 @@ fetch('/api/index.php/dolibarmodernfrontend/emailtemplates?type_template=ticket&
 ```javascript
 // Obtener y mostrar contenido de plantilla
 async function previewTemplate(templateId) {
-  const response = await fetch('/api/index.php/dolibarmodernfrontend/emailtemplates');
+  const response = await fetch('/api/index.php/dolibarrmodernfrontend/emailtemplates');
   const data = await response.json();
   
   const template = data.templates.find(t => t.id === templateId);
@@ -269,7 +269,7 @@ async function previewTemplate(templateId) {
 ```javascript
 // Filtrar plantillas según selección del usuario
 async function filterTemplates(type, lang) {
-  const url = `/api/index.php/dolibarmodernfrontend/emailtemplates?type_template=${type}&lang=${lang}&enabled=1`;
+  const url = `/api/index.php/dolibarrmodernfrontend/emailtemplates?type_template=${type}&lang=${lang}&enabled=1`;
   const response = await fetch(url, {
     headers: { 'DOLAPIKEY': 'your_api_key' }
   });
@@ -308,7 +308,7 @@ Este archivo prueba:
 
 **Uso:**
 1. Configurar `API_KEY` en el archivo
-2. Acceder desde navegador: `http://localhost/custom/dolibarmodernfrontend/test_emailtemplates_api.php`
+2. Acceder desde navegador: `http://localhost/custom/dolibarrmodernfrontend/test_emailtemplates_api.php`
 3. O ejecutar desde CLI: `php test_emailtemplates_api.php`
 
 ---
@@ -377,8 +377,8 @@ POST /tickets/{id}/sendemail
 
 ## 📖 Documentación Adicional
 
-- **Documentación completa:** `/custom/dolibarmodernfrontend/api_doc.php`
-- **Archivo de prueba:** `/custom/dolibarmodernfrontend/test_emailtemplates_api.php`
+- **Documentación completa:** `/custom/dolibarrmodernfrontend/api_doc.php`
+- **Archivo de prueba:** `/custom/dolibarrmodernfrontend/test_emailtemplates_api.php`
 - **Wiki Dolibarr:** https://wiki.dolibarr.org/index.php/Customize_the_email_sending_message
 
 ---
@@ -401,5 +401,5 @@ POST /tickets/{id}/sendemail
 
 **Versión:** 1.2.3  
 **Fecha:** 2024  
-**Módulo:** dolibarmodernfrontend  
+**Módulo:** dolibarrmodernfrontend  
 **Autor:** Cascade AI Assistant

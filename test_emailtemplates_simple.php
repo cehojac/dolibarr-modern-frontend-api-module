@@ -7,7 +7,7 @@
 $DOLIBARR_URL = 'http://localhost';
 $API_KEY = 'YOUR_API_KEY_HERE';
 
-$endpoint = $DOLIBARR_URL . '/api/index.php/dolibarmodernfrontend/emailtemplates';
+$endpoint = $DOLIBARR_URL . '/api/index.php/dolibarrmodernfrontend/emailtemplates';
 
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $endpoint);

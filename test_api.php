@@ -1,26 +1,26 @@
 <?php
 /**
- * Archivo de prueba para verificar el funcionamiento del módulo dolibarmodernfrontend
+ * Archivo de prueba para verificar el funcionamiento del módulo dolibarrmodernfrontend
  * Este archivo debe ejecutarse desde el navegador para probar la funcionalidad básica
  */
 
 require '../../main.inc.php';
-require_once DOL_DOCUMENT_ROOT.'/custom/dolibarmodernfrontend/class/ticketinterventionlink.class.php';
+require_once DOL_DOCUMENT_ROOT.'/custom/dolibarrmodernfrontend/class/ticketinterventionlink.class.php';
 
 // Load translation files required by the page
-$langs->loadLangs(array("dolibarmodernfrontend@dolibarmodernfrontend"));
+$langs->loadLangs(array("dolibarrmodernfrontend@dolibarrmodernfrontend"));
 
 // Access control
-if (!$user->rights->dolibarmodernfrontend->read) {
+if (!$user->rights->dolibarrmodernfrontend->read) {
     accessforbidden();
 }
 
 /*
  * View
  */
-llxHeader("", "Test API - ".$langs->trans("ModuleDolibarmodernfrontendName"));
+llxHeader("", "Test API - ".$langs->trans("ModuleDolibarrmodernfrontendName"));
 
-print load_fiche_titre("Test del Módulo dolibarmodernfrontend", '', 'object_dolibarmodernfrontend@dolibarmodernfrontend');
+print load_fiche_titre("Test del Módulo dolibarrmodernfrontend", '', 'object_dolibarrmodernfrontend@dolibarrmodernfrontend');
 
 print '<div class="fichecenter">';
 
@@ -83,10 +83,10 @@ print '</div>';
 print '<div class="info">';
 print '<h4>✅ Test 5: Verificación de permisos</h4>';
 $permisos = array();
-if ($user->rights->dolibarmodernfrontend->read) $permisos[] = 'Leer';
-if ($user->rights->dolibarmodernfrontend->write) $permisos[] = 'Escribir';
-if ($user->rights->dolibarmodernfrontend->delete) $permisos[] = 'Eliminar';
-if ($user->rights->dolibarmodernfrontend->admin) $permisos[] = 'Administrar';
+if ($user->rights->dolibarrmodernfrontend->read) $permisos[] = 'Leer';
+if ($user->rights->dolibarrmodernfrontend->write) $permisos[] = 'Escribir';
+if ($user->rights->dolibarrmodernfrontend->delete) $permisos[] = 'Eliminar';
+if ($user->rights->dolibarrmodernfrontend->admin) $permisos[] = 'Administrar';
 
 if (count($permisos) > 0) {
     print '<p><strong>ÉXITO:</strong> El usuario tiene los siguientes permisos: '.implode(', ', $permisos).'</p>';
@@ -99,7 +99,7 @@ print '</div>';
 print '<h3>Información del Sistema</h3>';
 print '<div class="info">';
 print '<ul>';
-print '<li><strong>Módulo:</strong> dolibarmodernfrontend v1.0.0</li>';
+print '<li><strong>Módulo:</strong> dolibarrmodernfrontend v1.0.0</li>';
 print '<li><strong>Sistema de vinculaciones:</strong> Nativo de Dolibarr (llx_element_element)</li>';
 print '<li><strong>Número de módulo:</strong> 105003</li>';
 print '<li><strong>Usuario actual:</strong> '.$user->login.'</li>';
@@ -111,11 +111,11 @@ print '<h3>Endpoints de la API</h3>';
 print '<div class="info">';
 print '<p>Los siguientes endpoints están disponibles:</p>';
 print '<ul>';
-print '<li><strong>POST</strong> /api/index.php/dolibarmodernfrontend/link/{ticket_id}/{intervention_id}</li>';
-print '<li><strong>DELETE</strong> /api/index.php/dolibarmodernfrontend/unlink/{ticket_id}/{intervention_id}</li>';
-print '<li><strong>GET</strong> /api/index.php/dolibarmodernfrontend/ticket/{ticket_id}/interventions</li>';
-print '<li><strong>GET</strong> /api/index.php/dolibarmodernfrontend/intervention/{intervention_id}/tickets</li>';
-print '<li><strong>POST</strong> /api/index.php/dolibarmodernfrontend/tickets/{ticket_id}/sendemail</li>';
+print '<li><strong>POST</strong> /api/index.php/dolibarrmodernfrontend/link/{ticket_id}/{intervention_id}</li>';
+print '<li><strong>DELETE</strong> /api/index.php/dolibarrmodernfrontend/unlink/{ticket_id}/{intervention_id}</li>';
+print '<li><strong>GET</strong> /api/index.php/dolibarrmodernfrontend/ticket/{ticket_id}/interventions</li>';
+print '<li><strong>GET</strong> /api/index.php/dolibarrmodernfrontend/intervention/{intervention_id}/tickets</li>';
+print '<li><strong>POST</strong> /api/index.php/dolibarrmodernfrontend/tickets/{ticket_id}/sendemail</li>';
 print '</ul>';
 print '</div>';
 
@@ -166,7 +166,7 @@ if (!empty($conf->global->MAIN_MAIL_SMTP_SERVER)) {
 print '<p><strong>INFO:</strong> Los endpoints de email están listos para usar. Ejemplos de uso:</p>';
 
 print '<h5>Método Nativo (sin archivos adjuntos):</h5>';
-print '<pre><code>POST /api/index.php/dolibarmodernfrontend/tickets/123/sendemail
+print '<pre><code>POST /api/index.php/dolibarrmodernfrontend/tickets/123/sendemail
 DOLAPIKEY: your_api_key
 Content-Type: application/json
 
@@ -177,7 +177,7 @@ Content-Type: application/json
 }</code></pre>';
 
 print '<h5>Método Personalizado (con archivos adjuntos):</h5>';
-print '<pre><code>POST /api/index.php/dolibarmodernfrontend/tickets/123/sendemail
+print '<pre><code>POST /api/index.php/dolibarrmodernfrontend/tickets/123/sendemail
 DOLAPIKEY: your_api_key
 Content-Type: application/json
 

@@ -3,7 +3,7 @@ require '../../../main.inc.php';
 require_once DOL_DOCUMENT_ROOT.'/core/lib/admin.lib.php';
 
 // Load translation files required by the page
-$langs->loadLangs(array("admin", "dolibarmodernfrontend@dolibarmodernfrontend"));
+$langs->loadLangs(array("admin", "dolibarrmodernfrontend@dolibarrmodernfrontend"));
 
 // Access control
 if (!$user->admin) {
@@ -40,7 +40,7 @@ if ($action == 'updateMask') {
  * View
  */
 
-$page_name = "DolibarmodernfrontendSetup";
+$page_name = "DolibarrmodernfrontendSetup";
 llxHeader('', $langs->trans($page_name));
 
 // Subheader
@@ -49,12 +49,12 @@ $linkback = '<a href="'.($backtopage ? $backtopage : DOL_URL_ROOT.'/admin/module
 print load_fiche_titre($langs->trans($page_name), $linkback, 'title_setup');
 
 // Configuration header
-$head = dolibarmodernfrontendAdminPrepareHead();
+$head = dolibarrmodernfrontendAdminPrepareHead();
 
-print dol_get_fiche_head($head, 'settings', $langs->trans("ModuleDolibarmodernfrontendName"), -1, 'dolibarmodernfrontend@dolibarmodernfrontend');
+print dol_get_fiche_head($head, 'settings', $langs->trans("ModuleDolibarrmodernfrontendName"), -1, 'dolibarrmodernfrontend@dolibarrmodernfrontend');
 
 // Setup page goes here
-print '<span class="opacitymedium">'.$langs->trans("DolibarmodernfrontendSetupPage").'</span><br><br>';
+print '<span class="opacitymedium">'.$langs->trans("DolibarrmodernfrontendSetupPage").'</span><br><br>';
 
 print '<div class="div-table-responsive-no-min">';
 print '<table class="noborder centpercent">';
@@ -68,10 +68,10 @@ print '<tr class="oddeven">';
 print '<td>'.$langs->trans("EnableAPILogging").'</td>';
 print '<td>';
 if ($conf->use_javascript_ajax) {
-    print ajax_constantonoff('DOLIBARMODERNFRONTEND_ENABLE_API_LOGGING');
+    print ajax_constantonoff('DOLIBARRMODERNFRONTEND_ENABLE_API_LOGGING');
 } else {
     $arrval = array('0' => $langs->trans("No"), '1' => $langs->trans("Yes"));
-    print $form->selectarray("DOLIBARMODERNFRONTEND_ENABLE_API_LOGGING", $arrval, $conf->global->DOLIBARMODERNFRONTEND_ENABLE_API_LOGGING);
+    print $form->selectarray("DOLIBARRMODERNFRONTEND_ENABLE_API_LOGGING", $arrval, $conf->global->DOLIBARRMODERNFRONTEND_ENABLE_API_LOGGING);
 }
 print '</td>';
 print '</tr>';
@@ -94,21 +94,21 @@ $db->close();
  *
  * @return array
  */
-function dolibarmodernfrontendAdminPrepareHead()
+function dolibarrmodernfrontendAdminPrepareHead()
 {
     global $langs, $conf;
 
-    $langs->load("dolibarmodernfrontend@dolibarmodernfrontend");
+    $langs->load("dolibarrmodernfrontend@dolibarrmodernfrontend");
 
     $h = 0;
     $head = array();
 
-    $head[$h][0] = dol_buildpath("/dolibarmodernfrontend/admin/dolibarmodernfrontend_setup.php", 1);
+    $head[$h][0] = dol_buildpath("/dolibarrmodernfrontend/admin/dolibarrmodernfrontend_setup.php", 1);
     $head[$h][1] = $langs->trans("Settings");
     $head[$h][2] = 'settings';
     $h++;
 
-    $head[$h][0] = dol_buildpath("/dolibarmodernfrontend/admin/dolibarmodernfrontend_about.php", 1);
+    $head[$h][0] = dol_buildpath("/dolibarrmodernfrontend/admin/dolibarrmodernfrontend_about.php", 1);
     $head[$h][1] = $langs->trans("About");
     $head[$h][2] = 'about';
     $h++;
@@ -116,12 +116,12 @@ function dolibarmodernfrontendAdminPrepareHead()
     // Show more tabs from modules
     // Entries must be declared in modules descriptor with line
     //$this->tabs = array(
-    //	'entity:+tabname:Title:@dolibarmodernfrontend:/dolibarmodernfrontend/mypage.php?id=__ID__'
+    //	'entity:+tabname:Title:@dolibarrmodernfrontend:/dolibarrmodernfrontend/mypage.php?id=__ID__'
     //); // to add new tab
     //$this->tabs = array(
-    //	'entity:-tabname:Title:@dolibarmodernfrontend:/dolibarmodernfrontend/mypage.php?id=__ID__'
+    //	'entity:-tabname:Title:@dolibarrmodernfrontend:/dolibarrmodernfrontend/mypage.php?id=__ID__'
     //); // to remove a tab
-    complete_head_from_modules($conf, $langs, null, $head, $h, 'dolibarmodernfrontend');
+    complete_head_from_modules($conf, $langs, null, $head, $h, 'dolibarrmodernfrontend');
 
     return $head;
 }

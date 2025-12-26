@@ -1,4 +1,4 @@
-# Instalación del Módulo dolibarmodernfrontend
+# Instalación del Módulo dolibarrmodernfrontend
 
 ## Requisitos Previos
 
@@ -11,7 +11,7 @@
 ### 1. Copiar el módulo
 ```bash
 # Copiar la carpeta completa del módulo a:
-/custom/dolibarmodernfrontend/
+/custom/dolibarrmodernfrontend/
 ```
 
 ### 2. Activar el módulo
@@ -32,7 +32,7 @@
 ### 4. Verificar instalación
 1. Navegar a **Herramientas → Frontend Moderno**
 2. Acceder a **API Documentation** para ver los endpoints disponibles
-3. Opcionalmente, ejecutar `/custom/dolibarmodernfrontend/test_api.php` para verificar el funcionamiento
+3. Opcionalmente, ejecutar `/custom/dolibarrmodernfrontend/test_api.php` para verificar el funcionamiento
 
 ## Características del Sistema
 
@@ -43,10 +43,10 @@
 - **Mantenimiento fácil** - Aprovecha la infraestructura nativa
 
 ### 🔗 Endpoints de la API
-- `POST /api/index.php/dolibarmodernfrontend/link/{ticket_id}/{intervention_id}`
-- `DELETE /api/index.php/dolibarmodernfrontend/unlink/{ticket_id}/{intervention_id}`
-- `GET /api/index.php/dolibarmodernfrontend/ticket/{ticket_id}/interventions`
-- `GET /api/index.php/dolibarmodernfrontend/intervention/{intervention_id}/tickets`
+- `POST /api/index.php/dolibarrmodernfrontend/link/{ticket_id}/{intervention_id}`
+- `DELETE /api/index.php/dolibarrmodernfrontend/unlink/{ticket_id}/{intervention_id}`
+- `GET /api/index.php/dolibarrmodernfrontend/ticket/{ticket_id}/interventions`
+- `GET /api/index.php/dolibarrmodernfrontend/intervention/{intervention_id}/tickets`
 
 ### 🔑 Autenticación API
 Todas las llamadas a la API requieren el header:
@@ -59,21 +59,21 @@ DOLAPIKEY: your_api_key_here
 ### Vincular un ticket con una intervención
 ```bash
 curl -X POST \
-  'http://tu-dolibarr.com/api/index.php/dolibarmodernfrontend/link/123/456' \
+  'http://tu-dolibarr.com/api/index.php/dolibarrmodernfrontend/link/123/456' \
   -H 'DOLAPIKEY: tu_api_key'
 ```
 
 ### Obtener intervenciones de un ticket
 ```bash
 curl -X GET \
-  'http://tu-dolibarr.com/api/index.php/dolibarmodernfrontend/ticket/123/interventions' \
+  'http://tu-dolibarr.com/api/index.php/dolibarrmodernfrontend/ticket/123/interventions' \
   -H 'DOLAPIKEY: tu_api_key'
 ```
 
 ## Solución de Problemas
 
 ### Error: "Módulo no encontrado"
-- Verificar que la carpeta esté en `/custom/dolibarmodernfrontend/`
+- Verificar que la carpeta esté en `/custom/dolibarrmodernfrontend/`
 - Verificar permisos de archivos
 
 ### Error: "Access forbidden"
@@ -87,8 +87,8 @@ curl -X GET \
 ## Soporte
 
 Para reportar problemas o solicitar nuevas características:
-- Revisar la documentación en `/custom/dolibarmodernfrontend/README.md`
-- Ejecutar el test de diagnóstico en `/custom/dolibarmodernfrontend/test_api.php`
+- Revisar la documentación en `/custom/dolibarrmodernfrontend/README.md`
+- Ejecutar el test de diagnóstico en `/custom/dolibarrmodernfrontend/test_api.php`
 
 ---
 

@@ -1,6 +1,6 @@
 <?php
 /**
- * Test file for Task Documents API endpoints in dolibarmodernfrontend module
+ * Test file for Task Documents API endpoints in dolibarrmodernfrontend module
  * 
  * This file tests the new project task documents endpoints:
  * - GET /task/{id}/documents
@@ -13,10 +13,10 @@
 require '../../main.inc.php';
 
 // Load translation files required by the page
-$langs->loadLangs(array("dolibarmodernfrontend@dolibarmodernfrontend", "projects"));
+$langs->loadLangs(array("dolibarrmodernfrontend@dolibarrmodernfrontend", "projects"));
 
 // Access control
-if (!$user->rights->dolibarmodernfrontend->read && !$user->rights->projet->lire) {
+if (!$user->rights->dolibarrmodernfrontend->read && !$user->rights->projet->lire) {
     accessforbidden();
 }
 
@@ -25,7 +25,7 @@ if (!$user->rights->dolibarmodernfrontend->read && !$user->rights->projet->lire)
  */
 llxHeader("", $langs->trans("TaskDocumentsAPITest"));
 
-print load_fiche_titre("Test de API de Documentos de Tareas - dolibarmodernfrontend v1.2.4", '', 'object_dolibarmodernfrontend@dolibarmodernfrontend');
+print load_fiche_titre("Test de API de Documentos de Tareas - dolibarrmodernfrontend v1.2.4", '', 'object_dolibarrmodernfrontend@dolibarrmodernfrontend');
 
 print '<div class="fichecenter">';
 
@@ -34,8 +34,8 @@ print '<h2>🔧 1. Verificación del Sistema</h2>';
 print '<div class="info">';
 
 // Check module activation
-$module_enabled = !empty($conf->dolibarmodernfrontend->enabled);
-print '<p><strong>Módulo dolibarmodernfrontend:</strong> ' . ($module_enabled ? '✅ Activado' : '❌ Desactivado') . '</p>';
+$module_enabled = !empty($conf->dolibarrmodernfrontend->enabled);
+print '<p><strong>Módulo dolibarrmodernfrontend:</strong> ' . ($module_enabled ? '✅ Activado' : '❌ Desactivado') . '</p>';
 
 // Check Project module
 $project_enabled = !empty($conf->projet->enabled);
@@ -50,7 +50,7 @@ $db_ok = ($db && $db->connected);
 print '<p><strong>Conexión BD:</strong> ' . ($db_ok ? '✅ Conectada' : '❌ Error') . '</p>';
 
 // Check permissions
-$has_module_perms = isset($user->rights->dolibarmodernfrontend) && $user->rights->dolibarmodernfrontend->read;
+$has_module_perms = isset($user->rights->dolibarrmodernfrontend) && $user->rights->dolibarrmodernfrontend->read;
 $has_project_perms = isset($user->rights->projet) && $user->rights->projet->lire;
 print '<p><strong>Permisos módulo:</strong> ' . ($has_module_perms ? '✅ Sí' : '❌ No') . '</p>';
 print '<p><strong>Permisos proyectos:</strong> ' . ($has_project_perms ? '✅ Sí' : '❌ No') . '</p>';
@@ -63,10 +63,10 @@ print '<h2>🔍 2. Verificación de Clases</h2>';
 print '<div class="info">';
 
 try {
-    require_once DOL_DOCUMENT_ROOT.'/custom/dolibarmodernfrontend/class/api_dolibarmodernfrontend.class.php';
+    require_once DOL_DOCUMENT_ROOT.'/custom/dolibarrmodernfrontend/class/api_dolibarrmodernfrontend.class.php';
     print '<p><strong>Clase API:</strong> ✅ Cargada correctamente</p>';
     
-    $api = new DolibarmodernfrontendApi();
+    $api = new DolibarrmodernfrontendApi();
     print '<p><strong>Instanciación API:</strong> ✅ Exitosa</p>';
     
     // Check if new methods exist
@@ -249,7 +249,7 @@ print '</div>';
 print '<h2>🚀 7. Endpoints de Documentos de Tareas</h2>';
 print '<div class="info">';
 
-$base_url = dol_buildpath('/api/index.php/dolibarmodernfrontend', 2);
+$base_url = dol_buildpath('/api/index.php/dolibarrmodernfrontend', 2);
 
 print '<h3>GET - Obtener Documentos de una Tarea</h3>';
 print '<p><strong>URL:</strong> <code>GET ' . $base_url . '/task/{id}/documents</code></p>';
@@ -401,7 +401,7 @@ print '<div class="info">';
 
 print '<h3>Errores Comunes</h3>';
 print '<ul>';
-print '<li><strong>401 Unauthorized:</strong> Verificar API key y permisos de proyecto/dolibarmodernfrontend</li>';
+print '<li><strong>401 Unauthorized:</strong> Verificar API key y permisos de proyecto/dolibarrmodernfrontend</li>';
 print '<li><strong>404 Not Found:</strong> Verificar que la tarea o proyecto existe</li>';
 print '<li><strong>Sin documentos:</strong> Verificar que se hayan subido archivos a la tarea</li>';
 print '<li><strong>Directorio no existe:</strong> El directorio se crea al subir el primer archivo</li>';
@@ -409,7 +409,7 @@ print '</ul>';
 
 print '<h3>Verificaciones</h3>';
 print '<ul>';
-print '<li>✅ Módulo dolibarmodernfrontend activado</li>';
+print '<li>✅ Módulo dolibarrmodernfrontend activado</li>';
 print '<li>✅ Módulo Proyectos activado</li>';
 print '<li>✅ API REST activada en Dolibarr</li>';
 print '<li>✅ Usuario con permisos de proyecto</li>';
@@ -435,7 +435,7 @@ $all_ok = $module_enabled && $project_enabled && $api_enabled && $db_ok && ($has
 
 if ($all_ok) {
     print '<p><strong>Estado general:</strong> ✅ Todo correcto - Los endpoints de documentos de tareas están listos</p>';
-    print '<p><strong>Versión:</strong> dolibarmodernfrontend v1.2.4</p>';
+    print '<p><strong>Versión:</strong> dolibarrmodernfrontend v1.2.4</p>';
     print '<p><strong>Nuevos endpoints:</strong> 2 endpoints de documentos de tareas implementados</p>';
     print '<p><strong>Características:</strong></p>';
     print '<ul>';
@@ -448,11 +448,11 @@ if ($all_ok) {
 } else {
     print '<p><strong>Estado general:</strong> ❌ Hay problemas que resolver antes de usar la API</p>';
     
-    if (!$module_enabled) print '<p>- Activar el módulo dolibarmodernfrontend</p>';
+    if (!$module_enabled) print '<p>- Activar el módulo dolibarrmodernfrontend</p>';
     if (!$project_enabled) print '<p>- Activar el módulo Proyectos</p>';
     if (!$api_enabled) print '<p>- Activar la API REST en Dolibarr</p>';
     if (!$db_ok) print '<p>- Verificar conexión a la base de datos</p>';
-    if (!$has_module_perms && !$has_project_perms) print '<p>- Configurar permisos de proyecto o dolibarmodernfrontend</p>';
+    if (!$has_module_perms && !$has_project_perms) print '<p>- Configurar permisos de proyecto o dolibarrmodernfrontend</p>';
 }
 
 print '</div>';

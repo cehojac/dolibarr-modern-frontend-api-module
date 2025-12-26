@@ -1,4 +1,4 @@
-# Endpoints de Documentos de Tareas de Proyectos - dolibarmodernfrontend v1.2.4
+# Endpoints de Documentos de Tareas de Proyectos - dolibarrmodernfrontend v1.2.4
 
 ## 📋 Descripción General
 
@@ -9,7 +9,7 @@ Nuevos endpoints que permiten acceder a los **documentos subidos a tareas de pro
 ### 1. Obtener Documentos de una Tarea (GET)
 
 ```
-GET /api/index.php/dolibarmodernfrontend/task/{id}/documents
+GET /api/index.php/dolibarrmodernfrontend/task/{id}/documents
 ```
 
 #### Parámetros
@@ -59,7 +59,7 @@ DOLAPIKEY: your_api_key
 ### 2. Subir Documento a una Tarea (POST)
 
 ```
-POST /api/index.php/dolibarmodernfrontend/task/{id}/documents
+POST /api/index.php/dolibarrmodernfrontend/task/{id}/documents
 ```
 
 #### Parámetros
@@ -119,7 +119,7 @@ Content-Type: application/json
 ### 3. Obtener Documentos de Todas las Tareas de un Proyecto
 
 ```
-GET /api/index.php/dolibarmodernfrontend/project/{id}/tasks/documents
+GET /api/index.php/dolibarrmodernfrontend/project/{id}/tasks/documents
 ```
 
 #### Parámetros
@@ -235,7 +235,7 @@ DOLAPIKEY: your_api_key
 
 Los endpoints requieren uno de los siguientes permisos:
 
-- `dolibarmodernfrontend->read` (Permisos del módulo)
+- `dolibarrmodernfrontend->read` (Permisos del módulo)
 - `projet->lire` (Permisos del módulo Proyectos)
 
 ## 💡 Casos de Uso
@@ -243,7 +243,7 @@ Los endpoints requieren uno de los siguientes permisos:
 ### 1. Obtener documentos de una tarea específica
 
 ```bash
-curl -X GET "http://localhost/dolibarr/api/index.php/dolibarmodernfrontend/task/45/documents" \
+curl -X GET "http://localhost/dolibarr/api/index.php/dolibarrmodernfrontend/task/45/documents" \
      -H "DOLAPIKEY: your_api_key"
 ```
 
@@ -255,7 +255,7 @@ curl -X GET "http://localhost/dolibarr/api/index.php/dolibarmodernfrontend/task/
 # Convertir archivo a base64 y subir
 FILE_BASE64=$(base64 -w 0 documento.pdf)
 
-curl -X POST "http://localhost/dolibarr/api/index.php/dolibarmodernfrontend/task/45/documents" \
+curl -X POST "http://localhost/dolibarr/api/index.php/dolibarrmodernfrontend/task/45/documents" \
      -H "DOLAPIKEY: your_api_key" \
      -H "Content-Type: application/json" \
      -d "{
@@ -272,7 +272,7 @@ curl -X POST "http://localhost/dolibarr/api/index.php/dolibarmodernfrontend/task
 ### 2. Vista consolidada del proyecto
 
 ```bash
-curl -X GET "http://localhost/dolibarr/api/index.php/dolibarmodernfrontend/project/10/tasks/documents" \
+curl -X GET "http://localhost/dolibarr/api/index.php/dolibarrmodernfrontend/project/10/tasks/documents" \
      -H "DOLAPIKEY: your_api_key"
 ```
 
@@ -282,7 +282,7 @@ curl -X GET "http://localhost/dolibarr/api/index.php/dolibarmodernfrontend/proje
 
 ```javascript
 // Dashboard del proyecto con estadísticas
-fetch('/api/index.php/dolibarmodernfrontend/project/10/tasks/documents', {
+fetch('/api/index.php/dolibarrmodernfrontend/project/10/tasks/documents', {
     headers: {
         'DOLAPIKEY': 'your_api_key'
     }
@@ -309,7 +309,7 @@ fetch('/api/index.php/dolibarmodernfrontend/project/10/tasks/documents', {
 
 ```javascript
 // Buscar todos los PDFs del proyecto
-fetch('/api/index.php/dolibarmodernfrontend/project/10/tasks/documents', {
+fetch('/api/index.php/dolibarrmodernfrontend/project/10/tasks/documents', {
     headers: {'DOLAPIKEY': 'your_api_key'}
 })
 .then(response => response.json())
@@ -339,7 +339,7 @@ fetch('/api/index.php/dolibarmodernfrontend/project/10/tasks/documents', {
 // Generar lista de URLs para descarga masiva
 async function downloadProjectDocs(projectId) {
     const response = await fetch(
-        `/api/index.php/dolibarmodernfrontend/project/${projectId}/tasks/documents`,
+        `/api/index.php/dolibarrmodernfrontend/project/${projectId}/tasks/documents`,
         {headers: {'DOLAPIKEY': 'your_api_key'}}
     );
     
@@ -446,7 +446,7 @@ Metadatos de archivos (opcional):
 
 El módulo incluye `test_task_documents_api.php` para verificar:
 
-1. ✅ Módulos activados (dolibarmodernfrontend, Proyectos, API)
+1. ✅ Módulos activados (dolibarrmodernfrontend, Proyectos, API)
 2. ✅ Permisos de usuario
 3. ✅ Existencia de tablas (projet, projet_task, ecm_files)
 4. ✅ Métodos de la API
@@ -457,7 +457,7 @@ El módulo incluye `test_task_documents_api.php` para verificar:
 ### Acceder al Test
 
 ```
-http://localhost/dolibarr/custom/dolibarmodernfrontend/test_task_documents_api.php
+http://localhost/dolibarr/custom/dolibarrmodernfrontend/test_task_documents_api.php
 ```
 
 ## 📝 Códigos de Respuesta HTTP
@@ -471,7 +471,7 @@ http://localhost/dolibarr/custom/dolibarmodernfrontend/test_task_documents_api.p
 
 1. **Módulo Proyectos**: Debe estar activado para que los endpoints funcionen correctamente.
 
-2. **Permisos**: El usuario debe tener permisos de lectura en Proyectos o en el módulo dolibarmodernfrontend.
+2. **Permisos**: El usuario debe tener permisos de lectura en Proyectos o en el módulo dolibarrmodernfrontend.
 
 3. **Directorio de tarea**: Se crea automáticamente al subir el primer archivo a la tarea.
 
@@ -527,7 +527,7 @@ Identificar tareas sin documentos o con documentación desactualizada.
 
 ---
 
-**Módulo**: dolibarmodernfrontend  
+**Módulo**: dolibarrmodernfrontend  
 **Versión**: 1.2.4  
 **Fecha**: 2025-10-05  
 **Autor**: DolibarrModules

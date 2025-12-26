@@ -2,7 +2,7 @@
 
 ## 🔍 **Problema Identificado**
 
-El error 401 "Unauthorized: Access denied" ocurría porque la API verificaba únicamente los permisos específicos del módulo `dolibarmodernfrontend`, que el usuario no tenía asignados.
+El error 401 "Unauthorized: Access denied" ocurría porque la API verificaba únicamente los permisos específicos del módulo `dolibarrmodernfrontend`, que el usuario no tenía asignados.
 
 ## ✅ **Solución Implementada**
 
@@ -11,28 +11,28 @@ Se modificó la verificación de permisos en **todos los métodos de la API** pa
 ### **Cambios Realizados:**
 
 1. **Métodos de Lectura** (`get`, `index`, `getInterventionsByTicket`, `getTicketsByIntervention`):
-   - ✅ Acepta `dolibarmodernfrontend->read` (permisos del módulo)
+   - ✅ Acepta `dolibarrmodernfrontend->read` (permisos del módulo)
    - ✅ **O** acepta `ticket->read` (permisos nativos de tickets)
 
 2. **Métodos de Escritura** (`post`, `put`, `sendTicketEmail`, `sendTicketEmailCustom`):
-   - ✅ Acepta `dolibarmodernfrontend->write` (permisos del módulo)
+   - ✅ Acepta `dolibarrmodernfrontend->write` (permisos del módulo)
    - ✅ **O** acepta `ticket->write` (permisos nativos de tickets)
 
 3. **Métodos de Eliminación** (`delete`):
-   - ✅ Acepta `dolibarmodernfrontend->delete` (permisos del módulo)
+   - ✅ Acepta `dolibarrmodernfrontend->delete` (permisos del módulo)
    - ✅ **O** acepta `ticket->write` (permisos nativos de tickets)
 
 ### **Código de Verificación Implementado:**
 
 ```php
 // Para métodos de lectura
-$has_module_perms = isset(DolibarrApiAccess::$user->rights->dolibarmodernfrontend) && 
-                   DolibarrApiAccess::$user->rights->dolibarmodernfrontend->read;
+$has_module_perms = isset(DolibarrApiAccess::$user->rights->dolibarrmodernfrontend) && 
+                   DolibarrApiAccess::$user->rights->dolibarrmodernfrontend->read;
 $has_ticket_perms = isset(DolibarrApiAccess::$user->rights->ticket) && 
                    DolibarrApiAccess::$user->rights->ticket->read;
 
 if (!$has_module_perms && !$has_ticket_perms) {
-    throw new RestException(401, 'Access denied: Need ticket read permissions or dolibarmodernfrontend read permissions');
+    throw new RestException(401, 'Access denied: Need ticket read permissions or dolibarrmodernfrontend read permissions');
 }
 ```
 
@@ -41,9 +41,9 @@ if (!$has_module_perms && !$has_ticket_perms) {
 Ahora la API funciona con usuarios que tengan **cualquiera** de estos permisos:
 
 ### **Opción 1: Permisos del Módulo** (Recomendado)
-- `dolibarmodernfrontend->read`
-- `dolibarmodernfrontend->write` 
-- `dolibarmodernfrontend->delete`
+- `dolibarrmodernfrontend->read`
+- `dolibarrmodernfrontend->write` 
+- `dolibarrmodernfrontend->delete`
 
 ### **Opción 2: Permisos Nativos** (Alternativa)
 - `ticket->read` (para consultas)
@@ -55,7 +55,7 @@ Ahora la API funciona con usuarios que tengan **cualquiera** de estos permisos:
 
 1. **Activar el módulo** en Configuración → Módulos
 2. **Asignar permisos** al usuario API:
-   - **Opción A:** Asignar permisos específicos del módulo `dolibarmodernfrontend`
+   - **Opción A:** Asignar permisos específicos del módulo `dolibarrmodernfrontend`
    - **Opción B:** Verificar que el usuario tenga permisos del módulo `Tickets`
 
 ### **Para Desarrolladores:**
@@ -72,12 +72,12 @@ Ahora la API funciona con usuarios que tengan **cualquiera** de estos permisos:
 
 3. **Endpoint de envío de emails:**
    ```
-   POST /api/index.php/dolibarmodernfrontendapi/tickets/{ticket_id}/sendemail
+   POST /api/index.php/dolibarrmodernfrontendapi/tickets/{ticket_id}/sendemail
    ```
 
 ## 🔧 **Archivos Modificados**
 
-- ✅ `class/api_dolibarmodernfrontend.class.php` - Verificación de permisos mejorada
+- ✅ `class/api_dolibarrmodernfrontend.class.php` - Verificación de permisos mejorada
 - ✅ `test_email_api.php` - Script de prueba creado
 - ✅ `FIX_401_PERMISSIONS.md` - Documentación de la solución
 
@@ -94,7 +94,7 @@ Ahora la API funciona con usuarios que tengan **cualquiera** de estos permisos:
 Ejecuta el script de prueba para verificar que todo funciona:
 
 ```bash
-cd c:\Users\cehoj\OneDrive\Documentos\www\dolibarr-modules\dolibarmodernfrontend\
+cd c:\Users\cehoj\OneDrive\Documentos\www\dolibarr-modules\dolibarrmodernfrontend\
 php test_email_api.php
 ```
 

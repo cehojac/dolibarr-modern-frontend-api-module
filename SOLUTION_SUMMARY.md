@@ -2,7 +2,7 @@
 
 ## 🎯 **Problema Original**
 - Error 401 "Unauthorized: Access denied" al usar `POST /tickets/{ticket_id}/sendemail`
-- La API verificaba únicamente permisos específicos del módulo `dolibarmodernfrontend`
+- La API verificaba únicamente permisos específicos del módulo `dolibarrmodernfrontend`
 - El usuario tenía permisos del módulo Tickets pero no del módulo personalizado
 
 ## 🔧 **Solución Implementada**
@@ -11,20 +11,20 @@
 
 **ANTES:**
 ```php
-if (!DolibarrApiAccess::$user->rights->dolibarmodernfrontend->write) {
+if (!DolibarrApiAccess::$user->rights->dolibarrmodernfrontend->write) {
     throw new RestException(401);
 }
 ```
 
 **DESPUÉS:**
 ```php
-$has_module_perms = isset(DolibarrApiAccess::$user->rights->dolibarmodernfrontend) && 
-                   DolibarrApiAccess::$user->rights->dolibarmodernfrontend->write;
+$has_module_perms = isset(DolibarrApiAccess::$user->rights->dolibarrmodernfrontend) && 
+                   DolibarrApiAccess::$user->rights->dolibarrmodernfrontend->write;
 $has_ticket_perms = isset(DolibarrApiAccess::$user->rights->ticket) && 
                    DolibarrApiAccess::$user->rights->ticket->write;
 
 if (!$has_module_perms && !$has_ticket_perms) {
-    throw new RestException(401, 'Access denied: Need ticket write permissions or dolibarmodernfrontend write permissions');
+    throw new RestException(401, 'Access denied: Need ticket write permissions or dolibarrmodernfrontend write permissions');
 }
 ```
 
@@ -43,14 +43,14 @@ if (!$has_module_perms && !$has_ticket_perms) {
 
 | Método | Permisos del Módulo | Permisos Nativos |
 |--------|-------------------|------------------|
-| **Lectura** | `dolibarmodernfrontend->read` | `ticket->read` |
-| **Escritura** | `dolibarmodernfrontend->write` | `ticket->write` |
-| **Eliminación** | `dolibarmodernfrontend->delete` | `ticket->write` |
+| **Lectura** | `dolibarrmodernfrontend->read` | `ticket->read` |
+| **Escritura** | `dolibarrmodernfrontend->write` | `ticket->write` |
+| **Eliminación** | `dolibarrmodernfrontend->delete` | `ticket->write` |
 
 ## 🚀 **Resultado**
 
 ### **✅ Funciona Con:**
-- Usuarios con permisos específicos del módulo `dolibarmodernfrontend`
+- Usuarios con permisos específicos del módulo `dolibarrmodernfrontend`
 - **O** usuarios con permisos del módulo nativo `Tickets`
 - **O** usuarios con ambos tipos de permisos
 
@@ -86,11 +86,11 @@ php test_email_api.php
 
 ## 📁 **Archivos Modificados**
 
-1. **`class/api_dolibarmodernfrontend.class.php`**
+1. **`class/api_dolibarrmodernfrontend.class.php`**
    - Verificación de permisos mejorada en 9 métodos
    - Mensajes de error más descriptivos
 
-2. **`core/modules/modDolibarmodernfrontend.class.php`**
+2. **`core/modules/modDolibarrmodernfrontend.class.php`**
    - Versión actualizada a 1.2.1
 
 3. **`CHANGELOG.md`**
@@ -118,4 +118,4 @@ php test_email_api.php
 
 ---
 
-**Módulo dolibarmodernfrontend v1.2.1 - Completamente funcional y listo para producción**
+**Módulo dolibarrmodernfrontend v1.2.1 - Completamente funcional y listo para producción**

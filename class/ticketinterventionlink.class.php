@@ -239,17 +239,17 @@ class TicketInterventionLink
     {
         $interventions = array();
 
-        $sql = "SELECT til.rowid, til.fk_ticket, til.fk_intervention, til.link_type, til.description,";
-        $sql .= " til.fk_user_author, til.datec, til.status,";
-        $sql .= " f.ref as intervention_ref, f.label as intervention_label, f.description as intervention_description,";
-        $sql .= " f.datei as intervention_date, f.fk_soc, f.fk_statut as intervention_status,";
-        $sql .= " s.nom as client_name, s.code_client";
-        $sql .= " FROM ".MAIN_DB_PREFIX."ticket_intervention_link til";
-        $sql .= " LEFT JOIN ".MAIN_DB_PREFIX."fichinter f ON f.rowid = til.fk_intervention";
+        $sql = "SELECT ee.rowid as link_id, ee.fk_source as ticket_id, ee.fk_target as intervention_id, ee.sourcetype, ee.targettype,";
+        $sql .= " f.ref as intervention_ref, f.description as intervention_description,";
+        $sql .= " f.datei as intervention_date, f.dateo as intervention_date_end,";
+        $sql .= " s.rowid as client_id, s.nom as client_name, s.code_client, f.fk_statut as intervention_status";
+        $sql .= " FROM ".MAIN_DB_PREFIX."element_element ee";
+        $sql .= " LEFT JOIN ".MAIN_DB_PREFIX."fichinter f ON f.rowid = ee.fk_target";
         $sql .= " LEFT JOIN ".MAIN_DB_PREFIX."societe s ON s.rowid = f.fk_soc";
-        $sql .= " WHERE til.fk_ticket = ".((int) $ticket_id);
-        $sql .= " AND til.status = ".self::STATUS_ACTIVE;
-        $sql .= " ORDER BY til.datec DESC";
+        $sql .= " WHERE ee.fk_source = ".((int) $ticket_id);
+        $sql .= " AND ee.sourcetype = 'ticket'";
+        $sql .= " AND ee.targettype IN ('intervention','fichinter')";
+        $sql .= " ORDER BY ee.rowid DESC";
 
         $resql = $this->db->query($sql);
         if ($resql) {
@@ -257,20 +257,26 @@ class TicketInterventionLink
             for ($i = 0; $i < $num; $i++) {
                 $obj = $this->db->fetch_object($resql);
                 $interventions[] = array(
-                    'link_id' => $obj->rowid,
-                    'ticket_id' => $obj->fk_ticket,
-                    'intervention_id' => $obj->fk_intervention,
-                    'link_type' => $obj->link_type,
-                    'link_description' => $obj->description,
-                    'link_author' => $obj->fk_user_author,
-                    'link_date' => $obj->datec,
-                    'link_status' => $obj->status,
+                    'link_id' => $obj->link_id,
+                    'ticket_id' => $obj->ticket_id,
+                    'intervention_id' => $obj->intervention_id,
+                    'link_type' => 'ticket_to_intervention',
+                    'link_description' => null,
+                    'link_author' => null,
+                    'link_date' => null,
+                    'link_status' => null,
                     'intervention_ref' => $obj->intervention_ref,
-                    'intervention_label' => $obj->intervention_label,
+                    'intervention_label' => $obj->intervention_description,
                     'intervention_description' => $obj->intervention_description,
                     'intervention_date' => $obj->intervention_date,
-                    'intervention_status' => $obj->intervention_status,
-                    'client_id' => $obj->fk_soc,
+                    'intervention_date_end' => isset($obj->intervention_date_end) ? $obj->intervention_date_end : null,
+                    'intervention_duration' => null,
+                    'intervention_total_ht' => null,
+                    'intervention_total_ttc' => null,
+                    'intervention_status_code' => isset($obj->intervention_status) ? $obj->intervention_status : null,
+                    'intervention_status_label' => null,
+                    'intervention_date_valid' => null,
+                    'client_id' => $obj->client_id,
                     'client_name' => $obj->client_name,
                     'client_code' => $obj->code_client
                 );
@@ -294,17 +300,17 @@ class TicketInterventionLink
     {
         $tickets = array();
 
-        $sql = "SELECT til.rowid, til.fk_ticket, til.fk_intervention, til.link_type, til.description,";
-        $sql .= " til.fk_user_author, til.datec, til.status,";
+        $sql = "SELECT ee.rowid as link_id, ee.fk_source as ticket_id, ee.fk_target as intervention_id, ee.sourcetype, ee.targettype,";
         $sql .= " t.ref as ticket_ref, t.subject as ticket_subject, t.message as ticket_message,";
-        $sql .= " t.datec as ticket_date, t.fk_soc, t.fk_statut as ticket_status,";
-        $sql .= " s.nom as client_name, s.code_client";
-        $sql .= " FROM ".MAIN_DB_PREFIX."ticket_intervention_link til";
-        $sql .= " LEFT JOIN ".MAIN_DB_PREFIX."ticket t ON t.rowid = til.fk_ticket";
+        $sql .= " t.datec as ticket_date, t.date_close as ticket_date_closed, t.fk_statut as ticket_status,";
+        $sql .= " s.rowid as client_id, s.nom as client_name, s.code_client";
+        $sql .= " FROM ".MAIN_DB_PREFIX."element_element ee";
+        $sql .= " LEFT JOIN ".MAIN_DB_PREFIX."ticket t ON t.rowid = ee.fk_source";
         $sql .= " LEFT JOIN ".MAIN_DB_PREFIX."societe s ON s.rowid = t.fk_soc";
-        $sql .= " WHERE til.fk_intervention = ".((int) $intervention_id);
-        $sql .= " AND til.status = ".self::STATUS_ACTIVE;
-        $sql .= " ORDER BY til.datec DESC";
+        $sql .= " WHERE ee.fk_target = ".((int) $intervention_id);
+        $sql .= " AND ee.targettype IN ('intervention','fichinter')";
+        $sql .= " AND ee.sourcetype = 'ticket'";
+        $sql .= " ORDER BY ee.rowid DESC";
 
         $resql = $this->db->query($sql);
         if ($resql) {
@@ -312,14 +318,14 @@ class TicketInterventionLink
             for ($i = 0; $i < $num; $i++) {
                 $obj = $this->db->fetch_object($resql);
                 $tickets[] = array(
-                    'link_id' => $obj->rowid,
-                    'ticket_id' => $obj->fk_ticket,
-                    'intervention_id' => $obj->fk_intervention,
-                    'link_type' => $obj->link_type,
-                    'link_description' => $obj->description,
-                    'link_author' => $obj->fk_user_author,
-                    'link_date' => $obj->datec,
-                    'link_status' => $obj->status,
+                    'link_id' => $obj->link_id,
+                    'ticket_id' => $obj->ticket_id,
+                    'intervention_id' => $obj->intervention_id,
+                    'link_type' => 'ticket_to_intervention',
+                    'link_description' => null,
+                    'link_author' => null,
+                    'link_date' => null,
+                    'link_status' => null,
                     'ticket_ref' => $obj->ticket_ref,
                     'ticket_subject' => $obj->ticket_subject,
                     'ticket_message' => $obj->ticket_message,
@@ -370,10 +376,11 @@ class TicketInterventionLink
      */
     public function existsLink($ticket_id, $intervention_id)
     {
-        $sql = "SELECT rowid FROM ".MAIN_DB_PREFIX."ticket_intervention_link";
-        $sql .= " WHERE fk_ticket = ".((int) $ticket_id);
-        $sql .= " AND fk_intervention = ".((int) $intervention_id);
-        $sql .= " AND status = ".self::STATUS_ACTIVE;
+        $sql = "SELECT rowid FROM ".MAIN_DB_PREFIX."element_element";
+        $sql .= " WHERE fk_source = ".((int) $ticket_id);
+        $sql .= " AND fk_target = ".((int) $intervention_id);
+        $sql .= " AND sourcetype = 'ticket'";
+        $sql .= " AND targettype IN ('intervention','fichinter')";
 
         $resql = $this->db->query($sql);
         if ($resql) {

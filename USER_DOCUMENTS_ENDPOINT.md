@@ -1,4 +1,4 @@
-# Endpoint de Documentos del Usuario - dolibarmodernfrontend v1.2.3
+# Endpoint de Documentos del Usuario - dolibarrmodernfrontend v1.2.3
 
 ## 📋 Descripción General
 
@@ -7,7 +7,7 @@ Nuevo endpoint que permite acceder a los **directorios manuales** y **archivos**
 ## 🚀 Endpoint
 
 ```
-GET /api/index.php/dolibarmodernfrontend/user/{id}/documents
+GET /api/index.php/dolibarrmodernfrontend/user/{id}/documents
 ```
 
 ### Parámetros
@@ -119,20 +119,20 @@ DOLAPIKEY: your_api_key
 
 El endpoint requiere uno de los siguientes permisos:
 
-- `dolibarmodernfrontend->read` (Permisos del módulo)
+- `dolibarrmodernfrontend->read` (Permisos del módulo)
 - `ecm->read` (Permisos del módulo ECM)
 
 ## 💡 Casos de Uso
 
 ### 1. Listar documentos personales del usuario
 ```bash
-curl -X GET "http://localhost/dolibarr/api/index.php/dolibarmodernfrontend/user/1/documents" \
+curl -X GET "http://localhost/dolibarr/api/index.php/dolibarrmodernfrontend/user/1/documents" \
      -H "DOLAPIKEY: your_api_key"
 ```
 
 ### 2. Integración con frontend
 ```javascript
-fetch('/api/index.php/dolibarmodernfrontend/user/1/documents', {
+fetch('/api/index.php/dolibarrmodernfrontend/user/1/documents', {
     headers: {
         'DOLAPIKEY': 'your_api_key'
     }
@@ -161,7 +161,7 @@ fetch('/api/index.php/dolibarmodernfrontend/user/1/documents', {
 ### 3. Obtener URLs de descarga
 ```javascript
 // Obtener todos los archivos PDF del usuario
-fetch('/api/index.php/dolibarmodernfrontend/user/1/documents', {
+fetch('/api/index.php/dolibarrmodernfrontend/user/1/documents', {
     headers: {'DOLAPIKEY': 'your_api_key'}
 })
 .then(response => response.json())
@@ -244,7 +244,7 @@ Almacena metadatos de archivos:
 ### Archivo de Prueba
 El módulo incluye `test_user_documents_api.php` para verificar:
 
-1. ✅ Módulos activados (dolibarmodernfrontend, ECM, API)
+1. ✅ Módulos activados (dolibarrmodernfrontend, ECM, API)
 2. ✅ Permisos de usuario
 3. ✅ Existencia de tablas ECM
 4. ✅ Métodos de la API
@@ -254,7 +254,7 @@ El módulo incluye `test_user_documents_api.php` para verificar:
 
 ### Acceder al Test
 ```
-http://localhost/dolibarr/custom/dolibarmodernfrontend/test_user_documents_api.php
+http://localhost/dolibarr/custom/dolibarrmodernfrontend/test_user_documents_api.php
 ```
 
 ## 📝 Códigos de Respuesta HTTP
@@ -268,7 +268,7 @@ http://localhost/dolibarr/custom/dolibarmodernfrontend/test_user_documents_api.p
 
 1. **Módulo ECM**: Aunque no es obligatorio tener el módulo ECM activado, es altamente recomendado para gestionar los directorios manuales.
 
-2. **Permisos**: El usuario debe tener permisos de lectura en ECM o en el módulo dolibarmodernfrontend.
+2. **Permisos**: El usuario debe tener permisos de lectura en ECM o en el módulo dolibarrmodernfrontend.
 
 3. **Archivos físicos**: El endpoint lee los archivos del sistema de archivos usando `dol_dir_list()`, por lo que los archivos deben existir físicamente en el servidor.
 
@@ -293,7 +293,7 @@ http://localhost/dolibarr/custom/dolibarmodernfrontend/test_user_documents_api.p
 
 ---
 
-**Módulo**: dolibarmodernfrontend  
+**Módulo**: dolibarrmodernfrontend  
 **Versión**: 1.2.3  
 **Fecha**: 2025-10-01  
 **Autor**: DolibarrModules

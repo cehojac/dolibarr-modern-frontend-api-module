@@ -11,7 +11,7 @@
  * 3. Run: php test_newmessage_api.php
  * 
  * Or access via browser:
- * http://localhost/dolibarr/custom/dolibarmodernfrontend/test_newmessage_api.php
+ * http://localhost/dolibarr/custom/dolibarrmodernfrontend/test_newmessage_api.php
  */
 
 // ============================================================================
@@ -38,7 +38,7 @@ echo "TEST: POST /tickets/{ticket_id}/newmessage - Add message to ticket\n";
 echo "=======================================================\n\n";
 
 // Build the API endpoint URL
-$endpoint = $DOLIBARR_URL . '/api/index.php/dolibarmodernfrontend/tickets/' . $TICKET_ID . '/newmessage';
+$endpoint = $DOLIBARR_URL . '/api/index.php/dolibarrmodernfrontend/tickets/' . $TICKET_ID . '/newmessage';
 
 // Prepare POST data (ticket_id is now in the URL, not in POST body)
 // Note: subject is not needed, it will use the ticket's subject automatically
@@ -185,7 +185,7 @@ echo "\n";
 echo "📱 JavaScript Fetch Example:\n";
 echo "============================\n";
 echo "const ticketId = $TICKET_ID;\n";
-echo "const response = await fetch(`\${dolibarrUrl}/api/index.php/dolibarmodernfrontend/tickets/\${ticketId}/newmessage`, {\n";
+echo "const response = await fetch(`\${dolibarrUrl}/api/index.php/dolibarrmodernfrontend/tickets/\${ticketId}/newmessage`, {\n";
 echo "  method: 'POST',\n";
 echo "  headers: {\n";
 echo "    'DOLAPIKEY': '$API_KEY',\n";
