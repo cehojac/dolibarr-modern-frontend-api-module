@@ -1,47 +1,47 @@
 # Dolibarr Modern Frontend Module
 
-## Descripción
+## Description
 
-El módulo **dolibarrmodernfrontend** proporciona una API moderna para la gestión de vinculaciones entre tickets e intervenciones en Dolibarr usando el **sistema nativo de vinculaciones** (`llx_element_element`). Permite crear, consultar y eliminar relaciones entre estos elementos de manera programática sin necesidad de tablas adicionales.
+The **dolibarrmodernfrontend** module provides a modern API to manage links between tickets and interventions in Dolibarr using the **native linking system** (`llx_element_element`). It lets you create, read, and delete relationships between these elements programmatically without any additional tables.
 
-## Características
+## Features
 
-- **API REST completa** para gestión de vinculaciones
-- **Usa el sistema nativo de Dolibarr** (`llx_element_element`)
-- **Sin tablas adicionales** - Compatible con la estructura estándar
-- **Vinculación directa** entre tickets e intervenciones
-- **Consultas optimizadas** para obtener datos relacionados
-- **Interfaz web** para gestión manual de vinculaciones
-- **Documentación integrada** de la API
-- **Sistema de permisos** granular
-- **Soporte multiidioma** (español incluido)
+- **Full REST API** for relationship management
+- **Uses Dolibarr’s native system** (`llx_element_element`)
+- **No extra tables** – compatible with the standard schema
+- **Direct linking** between tickets and interventions
+- **Optimized queries** to retrieve related data
+- **Web interface** for manual management
+- **Integrated API documentation**
+- **Granular permission system**
+- **Multi-language support** (Spanish included)
 
-## Instalación
+## Installation
 
-1. Copiar el módulo en el directorio `custom/dolibarrmodernfrontend/`
-2. Activar el módulo desde el panel de administración de Dolibarr
-3. Configurar los permisos de usuario según sea necesario
+1. Copy the module into `custom/dolibarrmodernfrontend/`
+2. Enable the module from Dolibarr’s administration panel
+3. Configure user permissions as needed
 
-**Nota:** No se requiere ejecutar scripts SQL adicionales ya que el módulo usa la tabla nativa `llx_element_element` de Dolibarr.
+**Note:** No additional SQL scripts are required because the module relies on Dolibarr’s native `llx_element_element` table.
 
-## Estructura del Módulo
+## Module Structure
 
 ```
 dolibarrmodernfrontend/
 ├── admin/
-│   └── dolibarrmodernfrontend_setup.php    # Configuración del módulo
+│   └── dolibarrmodernfrontend_setup.php    # Module configuration page
 ├── class/
-│   ├── ticketinterventionlink.class.php   # Clase principal (usa llx_element_element)
-│   └── api_dolibarrmodernfrontend.class.php # API REST
+│   ├── ticketinterventionlink.class.php   # Core class (uses llx_element_element)
+│   └── api_dolibarrmodernfrontend.class.php # REST API
 ├── core/
 │   └── modules/
-│       └── modDolibarrmodernfrontend.class.php # Definición del módulo
+│       └── modDolibarrmodernfrontend.class.php # Module definition
 ├── langs/
 │   └── es_ES/
-│       └── dolibarrmodernfrontend.lang      # Traducciones en español
-├── api_doc.php                             # Documentación de la API
-├── interventions_list.php                  # Interfaz de gestión
-└── README.md                               # Este archivo
+│       └── dolibarrmodernfrontend.lang      # Spanish translations
+├── api_doc.php                             # API documentation
+├── interventions_list.php                  # Management interface
+└── README.md                               # This file
 ```
 
 ## API Endpoints
@@ -51,66 +51,66 @@ dolibarrmodernfrontend/
 /api/index.php/dolibarrmodernfrontend
 ```
 
-### Autenticación
-Todas las llamadas a la API requieren el header `DOLAPIKEY` con una clave API válida.
+### Authentication
+All API calls require the `DOLAPIKEY` header with a valid API key.
 
-### Endpoints Disponibles
+### Available Endpoints
 
-#### 1. Vincular Ticket con Intervención
+#### 1. Link a Ticket to an Intervention
 ```http
 POST /link/{ticket_id}/{intervention_id}
 ```
 
-**Parámetros:**
-- `ticket_id` (int): ID del ticket
-- `intervention_id` (int): ID de la intervención
-- `link_type` (string, opcional): Tipo de vinculación (manual, automatic, system)
-- `description` (string, opcional): Descripción de la vinculación
+**Parameters:**
+- `ticket_id` (int): Ticket ID
+- `intervention_id` (int): Intervention ID
+- `link_type` (string, optional): Link type (manual, automatic, system)
+- `description` (string, optional): Link description
 
-#### 2. Desvincular Ticket de Intervención
+#### 2. Unlink a Ticket from an Intervention
 ```http
 DELETE /unlink/{ticket_id}/{intervention_id}
 ```
 
-#### 3. Obtener Intervenciones por Ticket
+#### 3. Get Interventions Linked to a Ticket
 ```http
 GET /ticket/{ticket_id}/interventions
 ```
 
-#### 4. Obtener Tickets por Intervención
+#### 4. Get Tickets Linked to an Intervention
 ```http
 GET /intervention/{intervention_id}/tickets
 ```
 
-#### 5. Crear Mensaje en Ticket con Contacto Personalizado
+#### 5. Create a Ticket Message with a Custom Contact
 ```http
 POST /tickets/{ticket_id}/newmessage
 ```
 
-**Parámetros de URL:**
-- `ticket_id` (int, requerido): ID del ticket en la URL
+**URL Parameters:**
+- `ticket_id` (int, required): Ticket ID in the URL
 
-**Parámetros del body:**
-- `message` (string, requerido): Contenido del mensaje
-- `contact_id` (int, opcional): ID del contacto que crea el mensaje (por defecto: 0 = usuario API)
-- `private` (int, opcional): Mensaje privado (0=público, 1=privado, por defecto: 0)
-- `send_email` (int, opcional): Enviar notificación email (0=no, 1=sí, por defecto: 0)
+**Body Parameters:**
+- `message` (string, required): Message content
+- `contact_id` (int, optional): ID of the contact creating the message (default: 0 = API user)
+- `private` (int, optional): Private message flag (0 = public, 1 = private, default: 0)
+- `send_email` (int, optional): Send email notification (0 = no, 1 = yes, default: 0)
 
-**Nota**: El subject no es necesario, se usa automáticamente el asunto del ticket.
+**Note:** Subject is not required; the ticket’s subject is used automatically.
 
-**Descripción:**
-Permite crear un mensaje en un ticket especificando qué contacto lo crea. Útil para integraciones API donde se necesita atribuir el mensaje al contacto correcto relacionado con la empresa del ticket. Usa el método nativo `newMessage()` de Dolibarr.
+**Description:**
+Creates a message in a ticket and optionally attributes it to a specific contact. Useful for API integrations that must credit the correct contact associated with the ticket’s company. Uses Dolibarr’s native `newMessage()` method.
 
-**Ejemplo de uso:**
+**Usage Example:**
 ```bash
 curl -X POST \
-  'http://tu-dolibarr.com/api/index.php/dolibarrmodernfrontend/tickets/123/newmessage' \
-  -H 'DOLAPIKEY: tu_api_key' \
+  'http://your-dolibarr.com/api/index.php/dolibarrmodernfrontend/tickets/123/newmessage' \
+  -H 'DOLAPIKEY: your_api_key' \
   -H 'Content-Type: application/x-www-form-urlencoded' \
-  -d 'message=Mensaje de prueba&contact_id=115&private=0&send_email=0'
+  -d 'message=Test message&contact_id=115&private=0&send_email=0'
 ```
 
-**Respuesta:**
+**Response:**
 ```json
 {
   "success": true,
@@ -120,42 +120,42 @@ curl -X POST \
   "message_id": 456,
   "created_by_contact_id": 115,
   "created_by_user_id": 0,
-  "created_by_login": "contacto@empresa.com",
-  "created_by_name": "Juan Pérez",
+  "created_by_login": "contact@company.com",
+  "created_by_name": "John Doe",
   "private": false,
   "send_email": false,
   "timestamp": "2025-10-19 22:45:00"
 }
 ```
 
-#### 6. Obtener URLs de Validación de IDs Profesionales
+#### 6. Retrieve Professional ID Validation URLs
 ```http
 GET /idprofvalidatorurl
 GET /idprofvalidatorurl?country=ES
 GET /idprofvalidatorurl?all=1
 ```
 
-**Descripción:**
-Devuelve las URLs de validación de identificadores profesionales (SIREN, NIF, CIF, TIN, etc.) según el país. Por defecto devuelve solo el país de la empresa configurada en Dolibarr. Basado en la función nativa `id_prof_url` de Dolibarr.
+**Description:**
+Returns validation URLs for professional identifiers (SIREN, NIF, CIF, TIN, etc.) by country. By default it returns URLs for your company’s country configured in Dolibarr. Based on Dolibarr’s native `id_prof_url` function.
 
-**Parámetros opcionales:**
-- `country` (string): Código de país específico (FR, ES, GB, etc.)
-- `all` (int): 1 para obtener todos los países disponibles
+**Optional Parameters:**
+- `country` (string): Specific country code (FR, ES, GB, etc.)
+- `all` (int): 1 to fetch all available countries
 
-**Modos de operación:**
-- **Sin parámetros**: Devuelve solo el país de la empresa (mysoc)
-- **?country=XX**: Devuelve solo el país especificado
-- **?all=1**: Devuelve todos los países disponibles
+**Modes of Operation:**
+- **No parameters:** Returns only the company country (mysoc)
+- **?country=XX:** Returns only the specified country
+- **?all=1:** Returns all available countries
 
-**Países soportados:**
-- FR (Francia): SIREN
-- GB/UK (Reino Unido): Company Number
-- ES (España): NIF/CIF
+**Supported Countries:**
+- FR (France): SIREN
+- GB/UK (United Kingdom): Company Number
+- ES (Spain): NIF/CIF
 - IN (India): TIN
-- DZ (Argelia): NIF
+- DZ (Algeria): NIF
 - PT (Portugal): NIF
 
-**Respuesta (modo company):**
+**Response (company mode):**
 ```json
 {
   "success": true,
@@ -183,67 +183,67 @@ Devuelve las URLs de validación de identificadores profesionales (SIREN, NIF, C
 }
 ```
 
-## Base de Datos
+## Database
 
-El módulo **NO crea tablas adicionales**. Utiliza la tabla nativa de Dolibarr:
+The module **does NOT create additional tables**. It relies on Dolibarr’s native table:
 
-### llx_element_element (tabla nativa)
-- `rowid`: ID único de la vinculación
-- `fk_source`: ID del elemento origen (ticket)
-- `sourcetype`: Tipo del elemento origen ('ticket')
-- `fk_target`: ID del elemento destino (intervención)
-- `targettype`: Tipo del elemento destino ('intervention')
+### llx_element_element (native table)
+- `rowid`: Link unique ID
+- `fk_source`: Source element ID (ticket)
+- `sourcetype`: Source element type ('ticket')
+- `fk_target`: Target element ID (intervention)
+- `targettype`: Target element type ('intervention')
 
-Esta implementación es **100% compatible** con el sistema estándar de Dolibarr y no requiere modificaciones en la base de datos.
+This implementation is **100% compatible** with Dolibarr’s standard system and does not require database changes.
 
-## Permisos
+## Permissions
 
-El módulo define los siguientes permisos:
+The module defines the following permissions:
 
-- **Leer**: Ver vinculaciones existentes
-- **Escribir**: Crear y modificar vinculaciones
-- **Eliminar**: Eliminar vinculaciones
-- **Administrar**: Configurar el módulo
+- **Read**: View existing links
+- **Write**: Create and update links
+- **Delete**: Remove links
+- **Administer**: Configure the module
 
-## Configuración
+## Configuration
 
-Acceder a `Herramientas > Frontend Moderno > Configuración` para ajustar las opciones del módulo.
+Go to `Tools > Modern Frontend > Setup` to adjust module options.
 
-## Uso de la API
+## API Usage
 
-### Ejemplo: Vincular un ticket con una intervención
+### Example: Link a ticket to an intervention
 
 ```bash
 curl -X POST \
-  'http://tu-dolibarr.com/api/index.php/dolibarrmodernfrontend/link/123/456' \
-  -H 'DOLAPIKEY: tu_api_key' \
+  'http://your-dolibarr.com/api/index.php/dolibarrmodernfrontend/link/123/456' \
+  -H 'DOLAPIKEY: your_api_key' \
   -H 'Content-Type: application/json' \
   -d '{
     "link_type": "manual",
-    "description": "Vinculación manual entre ticket y intervención"
+    "description": "Manual link between ticket and intervention"
   }'
 ```
 
-### Ejemplo: Obtener intervenciones de un ticket
+### Example: Get interventions from a ticket
 
 ```bash
 curl -X GET \
-  'http://tu-dolibarr.com/api/index.php/dolibarrmodernfrontend/ticket/123/interventions' \
-  -H 'DOLAPIKEY: tu_api_key'
+  'http://your-dolibarr.com/api/index.php/dolibarrmodernfrontend/ticket/123/interventions' \
+  -H 'DOLAPIKEY: your_api_key'
 ```
 
-## Información del Módulo
+## Module Info
 
-- **Número de módulo**: 105003
-- **Versión**: 1.2.6
-- **Familia**: interface
-- **Autor**: DolibarrModules
-- **Compatibilidad**: Dolibarr 11.0+, PHP 7.0+
+- **Module number**: 105003
+- **Version**: 1.2.6
+- **Family**: interface
+- **Author**: DolibarrModules
+- **Compatibility**: Dolibarr 11.0+, PHP 7.0+
 
-## Soporte
+## Support
 
-Para reportar problemas o solicitar nuevas características, contactar al desarrollador del módulo.
+To report issues or request new features, contact the module maintainer.
 
-## Licencia
+## License
 
-Este módulo se distribuye bajo la misma licencia que Dolibarr.
+This module is distributed under the same license as Dolibarr.

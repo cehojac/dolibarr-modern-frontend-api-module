@@ -3723,7 +3723,7 @@ class DolibarrmodernfrontendApi extends DolibarrApi
             $sql .= " LEFT JOIN ".MAIN_DB_PREFIX."user as u2 ON a.fk_user_action = u2.rowid";
             $sql .= " WHERE a.fk_element = ".(int)$ticket_id;
             $sql .= " AND a.elementtype = 'ticket'";
-            $sql .= " AND a.code = 'TICKET_MSG'";
+            $sql .= " AND a.code LIKE 'TICKET_MSG%'";
             $sql .= " ORDER BY a.datec ASC";
 
             $resql = $db->query($sql);
