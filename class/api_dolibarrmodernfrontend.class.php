@@ -1,6 +1,7 @@
 <?php
 require_once DOL_DOCUMENT_ROOT.'/api/class/api.class.php';
 require_once DOL_DOCUMENT_ROOT.'/custom/dolibarrmodernfrontend/class/ticketinterventionlink.class.php';
+require_once DOL_DOCUMENT_ROOT.'/custom/dolibarrmodernfrontend/core/modules/modDolibarrmodernfrontend.class.php';
 require_once DOL_DOCUMENT_ROOT.'/ticket/class/ticket.class.php';
 require_once DOL_DOCUMENT_ROOT.'/fichinter/class/fichinter.class.php';
 
@@ -29,6 +30,36 @@ class DolibarrmodernfrontendApi extends DolibarrApi
     {
         global $db, $conf;
         $this->db = $db;
+    }
+
+    /**
+     * Get module version and metadata
+     *
+     * @return array
+     *
+     * @url GET /version
+     *
+     * @throws RestException
+     */
+    public function getModuleVersion()
+    {
+        $has_module_perms = isset(DolibarrApiAccess::$user->rights->dolibarrmodernfrontend)
+            && DolibarrApiAccess::$user->rights->dolibarrmodernfrontend->read;
+        $has_ticket_perms = isset(DolibarrApiAccess::$user->rights->ticket)
+            && DolibarrApiAccess::$user->rights->ticket->read;
+
+        if (!$has_module_perms && !$has_ticket_perms) {
+            throw new RestException(401, 'Access denied: Need ticket or dolibarrmodernfrontend read permissions');
+        }
+
+        $module = new modDolibarrmodernfrontend($this->db);
+
+        return array(
+            'module' => $module->name,
+            'description' => $module->description,
+            'version' => $module->version,
+            'editor' => $module->editor_name,
+        );
     }
 
     /**
