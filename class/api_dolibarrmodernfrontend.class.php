@@ -1,18 +1,18 @@
 <?php
 require_once DOL_DOCUMENT_ROOT.'/api/class/api.class.php';
-require_once DOL_DOCUMENT_ROOT.'/custom/dolibarmodernfrontend/class/ticketinterventionlink.class.php';
+require_once DOL_DOCUMENT_ROOT.'/custom/dolibarrmodernfrontend/class/ticketinterventionlink.class.php';
 require_once DOL_DOCUMENT_ROOT.'/ticket/class/ticket.class.php';
 require_once DOL_DOCUMENT_ROOT.'/fichinter/class/fichinter.class.php';
 
 use Luracast\Restler\RestException;
 
 /**
- * API class for dolibarmodernfrontend module
+ * API class for dolibarrmodernfrontend module
  *
  * @access protected
  * @class  DolibarrApiAccess {@requires user,external}
  */
-class DolibarmodernfrontendApi extends DolibarrApi
+class DolibarrmodernfrontendApi extends DolibarrApi
 {
     /**
      * @var array   $FIELDS     Mandatory fields, checked when create and update object
@@ -44,13 +44,13 @@ class DolibarmodernfrontendApi extends DolibarrApi
     public function get($id)
     {
         // Verificar permisos: usar permisos nativos si no tiene permisos del módulo
-        $has_module_perms = isset(DolibarrApiAccess::$user->rights->dolibarmodernfrontend) && 
-                           DolibarrApiAccess::$user->rights->dolibarmodernfrontend->read;
+        $has_module_perms = isset(DolibarrApiAccess::$user->rights->dolibarrmodernfrontend) && 
+                           DolibarrApiAccess::$user->rights->dolibarrmodernfrontend->read;
         $has_ticket_perms = isset(DolibarrApiAccess::$user->rights->ticket) && 
                            DolibarrApiAccess::$user->rights->ticket->read;
         
         if (!$has_module_perms && !$has_ticket_perms) {
-            throw new RestException(401, 'Access denied: Need ticket read permissions or dolibarmodernfrontend read permissions');
+            throw new RestException(401, 'Access denied: Need ticket read permissions or dolibarrmodernfrontend read permissions');
         }
 
         $result = $this->_fetch($id);
@@ -84,13 +84,13 @@ class DolibarmodernfrontendApi extends DolibarrApi
         global $db, $conf;
 
         // Verificar permisos: usar permisos nativos si no tiene permisos del módulo
-        $has_module_perms = isset(DolibarrApiAccess::$user->rights->dolibarmodernfrontend) && 
-                           DolibarrApiAccess::$user->rights->dolibarmodernfrontend->read;
+        $has_module_perms = isset(DolibarrApiAccess::$user->rights->dolibarrmodernfrontend) && 
+                           DolibarrApiAccess::$user->rights->dolibarrmodernfrontend->read;
         $has_ticket_perms = isset(DolibarrApiAccess::$user->rights->ticket) && 
                            DolibarrApiAccess::$user->rights->ticket->read;
         
         if (!$has_module_perms && !$has_ticket_perms) {
-            throw new RestException(401, 'Access denied: Need ticket read permissions or dolibarmodernfrontend read permissions');
+            throw new RestException(401, 'Access denied: Need ticket read permissions or dolibarrmodernfrontend read permissions');
         }
 
         $obj_ret = array();
@@ -153,13 +153,13 @@ class DolibarmodernfrontendApi extends DolibarrApi
     public function post($request_data = null)
     {
         // Verificar permisos: usar permisos nativos si no tiene permisos del módulo
-        $has_module_perms = isset(DolibarrApiAccess::$user->rights->dolibarmodernfrontend) && 
-                           DolibarrApiAccess::$user->rights->dolibarmodernfrontend->write;
+        $has_module_perms = isset(DolibarrApiAccess::$user->rights->dolibarrmodernfrontend) && 
+                           DolibarrApiAccess::$user->rights->dolibarrmodernfrontend->write;
         $has_ticket_perms = isset(DolibarrApiAccess::$user->rights->ticket) && 
                            DolibarrApiAccess::$user->rights->ticket->write;
         
         if (!$has_module_perms && !$has_ticket_perms) {
-            throw new RestException(401, 'Access denied: Need ticket write permissions or dolibarmodernfrontend write permissions');
+            throw new RestException(401, 'Access denied: Need ticket write permissions or dolibarrmodernfrontend write permissions');
         }
 
         // Check mandatory fields
@@ -189,13 +189,13 @@ class DolibarmodernfrontendApi extends DolibarrApi
     public function put($id, $request_data = null)
     {
         // Verificar permisos: usar permisos nativos si no tiene permisos del módulo
-        $has_module_perms = isset(DolibarrApiAccess::$user->rights->dolibarmodernfrontend) && 
-                           DolibarrApiAccess::$user->rights->dolibarmodernfrontend->write;
+        $has_module_perms = isset(DolibarrApiAccess::$user->rights->dolibarrmodernfrontend) && 
+                           DolibarrApiAccess::$user->rights->dolibarrmodernfrontend->write;
         $has_ticket_perms = isset(DolibarrApiAccess::$user->rights->ticket) && 
                            DolibarrApiAccess::$user->rights->ticket->write;
         
         if (!$has_module_perms && !$has_ticket_perms) {
-            throw new RestException(401, 'Access denied: Need ticket write permissions or dolibarmodernfrontend write permissions');
+            throw new RestException(401, 'Access denied: Need ticket write permissions or dolibarrmodernfrontend write permissions');
         }
 
         $result = $this->_fetch($id);
@@ -228,13 +228,13 @@ class DolibarmodernfrontendApi extends DolibarrApi
     public function delete($id)
     {
         // Verificar permisos: usar permisos nativos si no tiene permisos del módulo
-        $has_module_perms = isset(DolibarrApiAccess::$user->rights->dolibarmodernfrontend) && 
-                           DolibarrApiAccess::$user->rights->dolibarmodernfrontend->delete;
+        $has_module_perms = isset(DolibarrApiAccess::$user->rights->dolibarrmodernfrontend) && 
+                           DolibarrApiAccess::$user->rights->dolibarrmodernfrontend->delete;
         $has_ticket_perms = isset(DolibarrApiAccess::$user->rights->ticket) && 
                            DolibarrApiAccess::$user->rights->ticket->write;
         
         if (!$has_module_perms && !$has_ticket_perms) {
-            throw new RestException(401, 'Access denied: Need ticket write permissions or dolibarmodernfrontend delete permissions');
+            throw new RestException(401, 'Access denied: Need ticket write permissions or dolibarrmodernfrontend delete permissions');
         }
         $result = $this->_fetch($id);
         if (!$result) {
@@ -376,13 +376,13 @@ class DolibarmodernfrontendApi extends DolibarrApi
     public function getInterventionsByTicket($ticket_id)
     {
         // Verificar permisos: usar permisos nativos si no tiene permisos del módulo
-        $has_module_perms = isset(DolibarrApiAccess::$user->rights->dolibarmodernfrontend) && 
-                           DolibarrApiAccess::$user->rights->dolibarmodernfrontend->read;
+        $has_module_perms = isset(DolibarrApiAccess::$user->rights->dolibarrmodernfrontend) && 
+                           DolibarrApiAccess::$user->rights->dolibarrmodernfrontend->read;
         $has_ticket_perms = isset(DolibarrApiAccess::$user->rights->ticket) && 
                            DolibarrApiAccess::$user->rights->ticket->read;
         
         if (!$has_module_perms && !$has_ticket_perms) {
-            throw new RestException(401, 'Access denied: Need ticket read permissions or dolibarmodernfrontend read permissions');
+            throw new RestException(401, 'Access denied: Need ticket read permissions or dolibarrmodernfrontend read permissions');
         }
 
         // Verificar que el ticket existe
@@ -424,13 +424,13 @@ class DolibarmodernfrontendApi extends DolibarrApi
     public function getTicketsByIntervention($intervention_id)
     {
         // Verificar permisos: usar permisos nativos si no tiene permisos del módulo
-        $has_module_perms = isset(DolibarrApiAccess::$user->rights->dolibarmodernfrontend) && 
-                           DolibarrApiAccess::$user->rights->dolibarmodernfrontend->read;
+        $has_module_perms = isset(DolibarrApiAccess::$user->rights->dolibarrmodernfrontend) && 
+                           DolibarrApiAccess::$user->rights->dolibarrmodernfrontend->read;
         $has_ticket_perms = isset(DolibarrApiAccess::$user->rights->ticket) && 
                            DolibarrApiAccess::$user->rights->ticket->read;
         
         if (!$has_module_perms && !$has_ticket_perms) {
-            throw new RestException(401, 'Access denied: Need ticket read permissions or dolibarmodernfrontend read permissions');
+            throw new RestException(401, 'Access denied: Need ticket read permissions or dolibarrmodernfrontend read permissions');
         }
 
         // Verificar que la intervención existe
@@ -471,7 +471,7 @@ class DolibarmodernfrontendApi extends DolibarrApi
     private function _validate($data)
     {
         $ticketinterventionlink = array();
-        foreach (DolibarmodernfrontendApi::$FIELDS as $field) {
+        foreach (DolibarrmodernfrontendApi::$FIELDS as $field) {
             if (!isset($data[$field]))
                 throw new RestException(400, "$field field missing");
             $ticketinterventionlink[$field] = $data[$field];
@@ -802,13 +802,13 @@ class DolibarmodernfrontendApi extends DolibarrApi
         global $db, $conf;
 
         // Verificar permisos: usar permisos nativos si no tiene permisos del módulo
-        $has_module_perms = isset(DolibarrApiAccess::$user->rights->dolibarmodernfrontend) && 
-                           DolibarrApiAccess::$user->rights->dolibarmodernfrontend->write;
+        $has_module_perms = isset(DolibarrApiAccess::$user->rights->dolibarrmodernfrontend) && 
+                           DolibarrApiAccess::$user->rights->dolibarrmodernfrontend->write;
         $has_ticket_perms = isset(DolibarrApiAccess::$user->rights->ticket) && 
                            DolibarrApiAccess::$user->rights->ticket->write;
         
         if (!$has_module_perms && !$has_ticket_perms) {
-            throw new RestException(401, 'Access denied: Need ticket write permissions or dolibarmodernfrontend write permissions');
+            throw new RestException(401, 'Access denied: Need ticket write permissions or dolibarrmodernfrontend write permissions');
         }
 
         // Verificar que el ticket existe
@@ -938,13 +938,13 @@ class DolibarmodernfrontendApi extends DolibarrApi
         global $db, $conf;
 
         // Verificar permisos: usar permisos nativos si no tiene permisos del módulo
-        $has_module_perms = isset(DolibarrApiAccess::$user->rights->dolibarmodernfrontend) && 
-                           DolibarrApiAccess::$user->rights->dolibarmodernfrontend->write;
+        $has_module_perms = isset(DolibarrApiAccess::$user->rights->dolibarrmodernfrontend) && 
+                           DolibarrApiAccess::$user->rights->dolibarrmodernfrontend->write;
         $has_ticket_perms = isset(DolibarrApiAccess::$user->rights->ticket) && 
                            DolibarrApiAccess::$user->rights->ticket->write;
         
         if (!$has_module_perms && !$has_ticket_perms) {
-            throw new RestException(401, 'Access denied: Need ticket write permissions or dolibarmodernfrontend write permissions');
+            throw new RestException(401, 'Access denied: Need ticket write permissions or dolibarrmodernfrontend write permissions');
         }
 
         // Verificar que el ticket existe
@@ -1011,13 +1011,13 @@ class DolibarmodernfrontendApi extends DolibarrApi
         global $db, $conf, $user, $langs;
 
         // Verificar permisos: usar permisos nativos de tickets si no tiene permisos del módulo
-        $has_module_perms = isset(DolibarrApiAccess::$user->rights->dolibarmodernfrontend) && 
-                           DolibarrApiAccess::$user->rights->dolibarmodernfrontend->write;
+        $has_module_perms = isset(DolibarrApiAccess::$user->rights->dolibarrmodernfrontend) && 
+                           DolibarrApiAccess::$user->rights->dolibarrmodernfrontend->write;
         $has_ticket_perms = isset(DolibarrApiAccess::$user->rights->ticket) && 
                            DolibarrApiAccess::$user->rights->ticket->write;
         
         if (!$has_module_perms && !$has_ticket_perms) {
-            throw new RestException(401, 'Access denied: Need ticket write permissions or dolibarmodernfrontend write permissions');
+            throw new RestException(401, 'Access denied: Need ticket write permissions or dolibarrmodernfrontend write permissions');
         }
 
         // Verificar que el ticket existe
@@ -1219,13 +1219,13 @@ class DolibarmodernfrontendApi extends DolibarrApi
         global $db, $conf, $user, $langs;
 
         // Verificar permisos: usar permisos nativos de tickets si no tiene permisos del módulo
-        $has_module_perms = isset(DolibarrApiAccess::$user->rights->dolibarmodernfrontend) && 
-                           DolibarrApiAccess::$user->rights->dolibarmodernfrontend->write;
+        $has_module_perms = isset(DolibarrApiAccess::$user->rights->dolibarrmodernfrontend) && 
+                           DolibarrApiAccess::$user->rights->dolibarrmodernfrontend->write;
         $has_ticket_perms = isset(DolibarrApiAccess::$user->rights->ticket) && 
                            DolibarrApiAccess::$user->rights->ticket->write;
         
         if (!$has_module_perms && !$has_ticket_perms) {
-            throw new RestException(401, 'Access denied: Need ticket write permissions or dolibarmodernfrontend write permissions');
+            throw new RestException(401, 'Access denied: Need ticket write permissions or dolibarrmodernfrontend write permissions');
         }
 
         // Verificar que el ticket existe
@@ -1528,13 +1528,13 @@ class DolibarmodernfrontendApi extends DolibarrApi
         global $db, $conf;
 
         // Verificar permisos: usar permisos nativos si no tiene permisos del módulo
-        $has_module_perms = isset(DolibarrApiAccess::$user->rights->dolibarmodernfrontend) && 
-                           DolibarrApiAccess::$user->rights->dolibarmodernfrontend->read;
+        $has_module_perms = isset(DolibarrApiAccess::$user->rights->dolibarrmodernfrontend) && 
+                           DolibarrApiAccess::$user->rights->dolibarrmodernfrontend->read;
         $has_ecm_perms = isset(DolibarrApiAccess::$user->rights->ecm) && 
                         DolibarrApiAccess::$user->rights->ecm->read;
         
         if (!$has_module_perms && !$has_ecm_perms) {
-            throw new RestException(401, 'Access denied: Need ECM read permissions or dolibarmodernfrontend read permissions');
+            throw new RestException(401, 'Access denied: Need ECM read permissions or dolibarrmodernfrontend read permissions');
         }
 
         // Verificar que el usuario existe
@@ -1722,13 +1722,13 @@ class DolibarmodernfrontendApi extends DolibarrApi
         global $db, $conf;
 
         // Verificar permisos: usar permisos nativos si no tiene permisos del módulo
-        $has_module_perms = isset(DolibarrApiAccess::$user->rights->dolibarmodernfrontend) && 
-                           DolibarrApiAccess::$user->rights->dolibarmodernfrontend->read;
+        $has_module_perms = isset(DolibarrApiAccess::$user->rights->dolibarrmodernfrontend) && 
+                           DolibarrApiAccess::$user->rights->dolibarrmodernfrontend->read;
         $has_project_perms = isset(DolibarrApiAccess::$user->rights->projet) && 
                             DolibarrApiAccess::$user->rights->projet->lire;
         
         if (!$has_module_perms && !$has_project_perms) {
-            throw new RestException(401, 'Access denied: Need project read permissions or dolibarmodernfrontend read permissions');
+            throw new RestException(401, 'Access denied: Need project read permissions or dolibarrmodernfrontend read permissions');
         }
 
         // Verificar que la tarea existe
@@ -1955,13 +1955,13 @@ class DolibarmodernfrontendApi extends DolibarrApi
         global $db, $conf, $user;
 
         // Verificar permisos
-        $has_module_perms = isset(DolibarrApiAccess::$user->rights->dolibarmodernfrontend) && 
-                           DolibarrApiAccess::$user->rights->dolibarmodernfrontend->write;
+        $has_module_perms = isset(DolibarrApiAccess::$user->rights->dolibarrmodernfrontend) && 
+                           DolibarrApiAccess::$user->rights->dolibarrmodernfrontend->write;
         $has_project_perms = isset(DolibarrApiAccess::$user->rights->projet) && 
                             DolibarrApiAccess::$user->rights->projet->creer;
         
         if (!$has_module_perms && !$has_project_perms) {
-            throw new RestException(401, 'Access denied: Need project write permissions or dolibarmodernfrontend write permissions');
+            throw new RestException(401, 'Access denied: Need project write permissions or dolibarrmodernfrontend write permissions');
         }
 
         // Verificar que la tarea existe
@@ -2130,13 +2130,13 @@ class DolibarmodernfrontendApi extends DolibarrApi
         global $db, $conf;
 
         // Verificar permisos
-        $has_module_perms = isset(DolibarrApiAccess::$user->rights->dolibarmodernfrontend) && 
-                           DolibarrApiAccess::$user->rights->dolibarmodernfrontend->read;
+        $has_module_perms = isset(DolibarrApiAccess::$user->rights->dolibarrmodernfrontend) && 
+                           DolibarrApiAccess::$user->rights->dolibarrmodernfrontend->read;
         $has_project_perms = isset(DolibarrApiAccess::$user->rights->projet) && 
                             DolibarrApiAccess::$user->rights->projet->lire;
         
         if (!$has_module_perms && !$has_project_perms) {
-            throw new RestException(401, 'Access denied: Need project read permissions or dolibarmodernfrontend read permissions');
+            throw new RestException(401, 'Access denied: Need project read permissions or dolibarrmodernfrontend read permissions');
         }
 
         // Verificar que el proyecto existe
@@ -2236,13 +2236,13 @@ class DolibarmodernfrontendApi extends DolibarrApi
         global $db, $conf;
 
         // Verificar permisos
-        $has_module_perms = isset(DolibarrApiAccess::$user->rights->dolibarmodernfrontend) && 
-                           DolibarrApiAccess::$user->rights->dolibarmodernfrontend->read;
+        $has_module_perms = isset(DolibarrApiAccess::$user->rights->dolibarrmodernfrontend) && 
+                           DolibarrApiAccess::$user->rights->dolibarrmodernfrontend->read;
         $has_project_perms = isset(DolibarrApiAccess::$user->rights->projet) && 
                             DolibarrApiAccess::$user->rights->projet->lire;
         
         if (!$has_module_perms && !$has_project_perms) {
-            throw new RestException(401, 'Access denied: Need project read permissions or dolibarmodernfrontend read permissions');
+            throw new RestException(401, 'Access denied: Need project read permissions or dolibarrmodernfrontend read permissions');
         }
 
         // Verificar que la tarea existe
@@ -2356,13 +2356,13 @@ class DolibarmodernfrontendApi extends DolibarrApi
         global $db, $conf;
 
         // Verificar permisos
-        $has_module_perms = isset(DolibarrApiAccess::$user->rights->dolibarmodernfrontend) && 
-                           DolibarrApiAccess::$user->rights->dolibarmodernfrontend->write;
+        $has_module_perms = isset(DolibarrApiAccess::$user->rights->dolibarrmodernfrontend) && 
+                           DolibarrApiAccess::$user->rights->dolibarrmodernfrontend->write;
         $has_project_perms = isset(DolibarrApiAccess::$user->rights->projet) && 
                             DolibarrApiAccess::$user->rights->projet->creer;
         
         if (!$has_module_perms && !$has_project_perms) {
-            throw new RestException(401, 'Access denied: Need project write permissions or dolibarmodernfrontend write permissions');
+            throw new RestException(401, 'Access denied: Need project write permissions or dolibarrmodernfrontend write permissions');
         }
 
         // Verificar que la tarea existe
@@ -2499,13 +2499,13 @@ class DolibarmodernfrontendApi extends DolibarrApi
         global $db, $conf;
 
         // Verificar permisos
-        $has_module_perms = isset(DolibarrApiAccess::$user->rights->dolibarmodernfrontend) && 
-                           DolibarrApiAccess::$user->rights->dolibarmodernfrontend->write;
+        $has_module_perms = isset(DolibarrApiAccess::$user->rights->dolibarrmodernfrontend) && 
+                           DolibarrApiAccess::$user->rights->dolibarrmodernfrontend->write;
         $has_project_perms = isset(DolibarrApiAccess::$user->rights->projet) && 
                             DolibarrApiAccess::$user->rights->projet->creer;
         
         if (!$has_module_perms && !$has_project_perms) {
-            throw new RestException(401, 'Access denied: Need project write permissions or dolibarmodernfrontend write permissions');
+            throw new RestException(401, 'Access denied: Need project write permissions or dolibarrmodernfrontend write permissions');
         }
 
         // Verificar que la tarea existe
@@ -2580,13 +2580,13 @@ class DolibarmodernfrontendApi extends DolibarrApi
         global $mysoc;
         
         // Verificar permisos: usar permisos nativos si no tiene permisos del módulo
-        $has_module_perms = isset(DolibarrApiAccess::$user->rights->dolibarmodernfrontend) && 
-                           DolibarrApiAccess::$user->rights->dolibarmodernfrontend->read;
+        $has_module_perms = isset(DolibarrApiAccess::$user->rights->dolibarrmodernfrontend) && 
+                           DolibarrApiAccess::$user->rights->dolibarrmodernfrontend->read;
         $has_societe_perms = isset(DolibarrApiAccess::$user->rights->societe) && 
                             DolibarrApiAccess::$user->rights->societe->lire;
         
         if (!$has_module_perms && !$has_societe_perms) {
-            throw new RestException(401, 'Access denied: Need societe read permissions or dolibarmodernfrontend read permissions');
+            throw new RestException(401, 'Access denied: Need societe read permissions or dolibarrmodernfrontend read permissions');
         }
 
         // Array con las URLs de validación por país
@@ -2757,12 +2757,12 @@ class DolibarmodernfrontendApi extends DolibarrApi
         global $db, $conf;
 
         // Verificar permisos: usar permisos nativos si no tiene permisos del módulo
-        $has_module_perms = isset(DolibarrApiAccess::$user->rights->dolibarmodernfrontend) && 
-                           DolibarrApiAccess::$user->rights->dolibarmodernfrontend->read;
+        $has_module_perms = isset(DolibarrApiAccess::$user->rights->dolibarrmodernfrontend) && 
+                           DolibarrApiAccess::$user->rights->dolibarrmodernfrontend->read;
         $has_admin_perms = DolibarrApiAccess::$user->admin;
         
         if (!$has_module_perms && !$has_admin_perms) {
-            throw new RestException(401, 'Access denied: Need admin permissions or dolibarmodernfrontend read permissions');
+            throw new RestException(401, 'Access denied: Need admin permissions or dolibarrmodernfrontend read permissions');
         }
 
         $templates = array();
@@ -2904,11 +2904,11 @@ class DolibarmodernfrontendApi extends DolibarrApi
             'usage_info' => array(
                 'description' => 'Email templates can be filtered by type, language, enabled status, and privacy',
                 'filter_examples' => array(
-                    'by_type' => '/api/index.php/dolibarmodernfrontend/emailtemplates?type_template=ticket',
-                    'by_lang' => '/api/index.php/dolibarmodernfrontend/emailtemplates?lang=es_ES',
-                    'enabled_only' => '/api/index.php/dolibarmodernfrontend/emailtemplates?enabled=1',
-                    'public_only' => '/api/index.php/dolibarmodernfrontend/emailtemplates?private=0',
-                    'combined' => '/api/index.php/dolibarmodernfrontend/emailtemplates?type_template=ticket&lang=es_ES&enabled=1'
+                    'by_type' => '/api/index.php/dolibarrmodernfrontend/emailtemplates?type_template=ticket',
+                    'by_lang' => '/api/index.php/dolibarrmodernfrontend/emailtemplates?lang=es_ES',
+                    'enabled_only' => '/api/index.php/dolibarrmodernfrontend/emailtemplates?enabled=1',
+                    'public_only' => '/api/index.php/dolibarrmodernfrontend/emailtemplates?private=0',
+                    'combined' => '/api/index.php/dolibarrmodernfrontend/emailtemplates?type_template=ticket&lang=es_ES&enabled=1'
                 ),
                 'variables_info' => 'The "variables" field lists all template variables found in the format __VARIABLE__'
             )
@@ -2931,12 +2931,12 @@ class DolibarmodernfrontendApi extends DolibarrApi
         global $db, $conf, $mysoc, $langs;
 
         // Verificar permisos
-        $has_module_perms = isset(DolibarrApiAccess::$user->rights->dolibarmodernfrontend) && 
-                           DolibarrApiAccess::$user->rights->dolibarmodernfrontend->read;
+        $has_module_perms = isset(DolibarrApiAccess::$user->rights->dolibarrmodernfrontend) && 
+                           DolibarrApiAccess::$user->rights->dolibarrmodernfrontend->read;
         $has_admin_perms = DolibarrApiAccess::$user->admin;
         
         if (!$has_module_perms && !$has_admin_perms) {
-            throw new RestException(401, 'Access denied: Need admin permissions or dolibarmodernfrontend read permissions');
+            throw new RestException(401, 'Access denied: Need admin permissions or dolibarrmodernfrontend read permissions');
         }
 
         require_once DOL_DOCUMENT_ROOT.'/core/lib/functions.lib.php';
@@ -3452,10 +3452,10 @@ class DolibarmodernfrontendApi extends DolibarrApi
             'usage_info' => array(
                 'description' => 'Substitution variables can be filtered by context',
                 'examples' => array(
-                    'all' => '/api/index.php/dolibarmodernfrontend/substitutionvariables',
-                    'user_only' => '/api/index.php/dolibarmodernfrontend/substitutionvariables?context=user',
-                    'ticket_only' => '/api/index.php/dolibarmodernfrontend/substitutionvariables?context=ticket',
-                    'mycompany_only' => '/api/index.php/dolibarmodernfrontend/substitutionvariables?context=mycompany'
+                    'all' => '/api/index.php/dolibarrmodernfrontend/substitutionvariables',
+                    'user_only' => '/api/index.php/dolibarrmodernfrontend/substitutionvariables?context=user',
+                    'ticket_only' => '/api/index.php/dolibarrmodernfrontend/substitutionvariables?context=ticket',
+                    'mycompany_only' => '/api/index.php/dolibarrmodernfrontend/substitutionvariables?context=mycompany'
                 ),
                 'note' => 'Variables with __ prefix and suffix are placeholders that will be replaced with actual values when used in templates'
             )

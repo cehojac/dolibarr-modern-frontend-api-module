@@ -1,4 +1,4 @@
-# Changelog - dolibarmodernfrontend
+# Changelog - dolibarrmodernfrontend
 
 Todas las modificaciones importantes de este proyecto serán documentadas en este archivo.
 
@@ -17,7 +17,7 @@ Todas las modificaciones importantes de este proyecto serán documentadas en est
 - **Subject automático**: Usa el subject del ticket automáticamente
 - **Mensajes privados**: Parámetro `private` para mensajes internos (0=público, 1=privado)
 - **Notificación email**: Parámetro `send_email` para enviar notificación (0=no, 1=sí)
-- **Permisos flexibles**: Acepta permisos de ticket o dolibarmodernfrontend
+- **Permisos flexibles**: Acepta permisos de ticket o dolibarrmodernfrontend
 - **Contactos de empresa**: Usa contactos relacionados con la empresa del ticket
 
 ### 📋 Parámetros del Endpoint
@@ -31,7 +31,7 @@ Todas las modificaciones importantes de este proyecto serán documentadas en est
 
 ### 🎯 Formato de Entrada
 ```bash
-POST /api/index.php/dolibarmodernfrontend/tickets/123/newmessage
+POST /api/index.php/dolibarrmodernfrontend/tickets/123/newmessage
 Content-Type: application/x-www-form-urlencoded
 
 message=Mensaje de prueba&contact_id=115&private=0&send_email=0
@@ -88,7 +88,7 @@ message=Mensaje de prueba&contact_id=115&private=0&send_email=0
 - **Información completa**: Nombre del ID (SIREN, NIF, TIN, etc.), descripción y URL template
 - **Placeholder dinámico**: Usa `{IDPROF}` como marcador para reemplazar con el ID real
 - **Países soportados**: Francia (SIREN), Reino Unido (Company Number), España (NIF/CIF), India (TIN), Argelia (NIF), Portugal (NIF)
-- **Permisos flexibles**: Acepta permisos de societe o dolibarmodernfrontend
+- **Permisos flexibles**: Acepta permisos de societe o dolibarrmodernfrontend
 - **Manejo de errores**: Respuesta informativa si el país no tiene URLs disponibles
 
 ### 📋 Información Retornada
@@ -360,9 +360,9 @@ GET /idprofvalidatorurl?all=1
 - **Retrocompatibilidad**: Mantiene soporte para permisos específicos del módulo
 
 ### 📋 Cambios en Verificación de Permisos
-- ✅ **Métodos de lectura**: Acepta `dolibarmodernfrontend->read` O `ticket->read`
-- ✅ **Métodos de escritura**: Acepta `dolibarmodernfrontend->write` O `ticket->write`
-- ✅ **Métodos de eliminación**: Acepta `dolibarmodernfrontend->delete` O `ticket->write`
+- ✅ **Métodos de lectura**: Acepta `dolibarrmodernfrontend->read` O `ticket->read`
+- ✅ **Métodos de escritura**: Acepta `dolibarrmodernfrontend->write` O `ticket->write`
+- ✅ **Métodos de eliminación**: Acepta `dolibarrmodernfrontend->delete` O `ticket->write`
 - ✅ **Mensajes de error mejorados**: Indica qué permisos son necesarios
 
 ### 🎯 Métodos Actualizados
@@ -483,18 +483,18 @@ GET /idprofvalidatorurl?all=1
 
 ### 📁 Estructura de Archivos
 ```
-dolibarmodernfrontend/
+dolibarrmodernfrontend/
 ├── admin/
-│   └── dolibarmodernfrontend_setup.php
+│   └── dolibarrmodernfrontend_setup.php
 ├── class/
 │   ├── ticketinterventionlink.class.php
-│   └── api_dolibarmodernfrontend.class.php
+│   └── api_dolibarrmodernfrontend.class.php
 ├── core/
 │   └── modules/
-│       └── modDolibarmodernfrontend.class.php
+│       └── modDolibarrmodernfrontend.class.php
 ├── langs/
 │   └── es_ES/
-│       └── dolibarmodernfrontend.lang
+│       └── dolibarrmodernfrontend.lang
 ├── api_doc.php
 ├── interventions_list.php
 ├── test_api.php

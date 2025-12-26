@@ -7,12 +7,12 @@
  * - POST /task/{id}/assign - Assign a user to a task with a role
  * - DELETE /task/{id}/contacts/{contact_id}/{contact_source} - Remove contact from task
  * 
- * Usage: Access via browser: http://localhost/custom/dolibarmodernfrontend/test_task_contacts_api.php
+ * Usage: Access via browser: http://localhost/custom/dolibarrmodernfrontend/test_task_contacts_api.php
  */
 
 // Configuration
 define('DOLAPIKEY', 'YOUR_API_KEY_HERE'); // Replace with your actual API key
-define('DOLAPIURL', 'http://localhost/api/index.php/dolibarmodernfrontend');
+define('DOLAPIURL', 'http://localhost/api/index.php/dolibarrmodernfrontend');
 
 // Test data - MODIFY THESE VALUES
 $test_task_id = 1;        // ID of an existing task
@@ -390,7 +390,7 @@ $test_role = 'TASKEXECUTIVE'; // Role to assign (TASKEXECUTIVE, TASKMANAGER, etc
         <?php endif; ?>
         
         <div style="margin-top: 30px; padding: 15px; background-color: #e8f5e9; border-radius: 5px;">
-            <strong>✅ Module Version:</strong> dolibarmodernfrontend v1.2.5<br>
+            <strong>✅ Module Version:</strong> dolibarrmodernfrontend v1.2.5<br>
             <strong>📅 Date:</strong> <?php echo date('Y-m-d H:i:s'); ?><br>
             <strong>🔗 Documentation:</strong> <a href="api_doc.php">API Documentation</a>
         </div>

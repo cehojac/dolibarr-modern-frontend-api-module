@@ -1,4 +1,4 @@
-# 📋 Resumen Ejecutivo - Módulo dolibarmodernfrontend
+# 📋 Resumen Ejecutivo - Módulo dolibarrmodernfrontend
 
 ## 🎯 Objetivo Cumplido
 
@@ -48,7 +48,7 @@
 ## 📁 Estructura Final
 
 ```
-dolibarmodernfrontend/
+dolibarrmodernfrontend/
 ├── 📄 README.md                    # Documentación principal
 ├── 📄 INSTALL.md                   # Guía de instalación
 ├── 📄 CHANGELOG.md                 # Historial de cambios
@@ -57,14 +57,14 @@ dolibarmodernfrontend/
 ├── 📄 api_doc.php                  # Documentación API
 ├── 📄 interventions_list.php       # Interfaz web
 ├── 📁 admin/
-│   └── dolibarmodernfrontend_setup.php
+│   └── dolibarrmodernfrontend_setup.php
 ├── 📁 class/
 │   ├── ticketinterventionlink.class.php
-│   └── api_dolibarmodernfrontend.class.php
+│   └── api_dolibarrmodernfrontend.class.php
 ├── 📁 core/modules/
-│   └── modDolibarmodernfrontend.class.php
+│   └── modDolibarrmodernfrontend.class.php
 └── 📁 langs/es_ES/
-    └── dolibarmodernfrontend.lang
+    └── dolibarrmodernfrontend.lang
 ```
 
 ## 🚀 Ventajas Clave Logradas
@@ -89,11 +89,11 @@ dolibarmodernfrontend/
 ### Para Desarrolladores
 ```bash
 # Vincular ticket 123 con intervención 456
-curl -X POST 'http://dolibarr.com/api/index.php/dolibarmodernfrontend/link/123/456' \
+curl -X POST 'http://dolibarr.com/api/index.php/dolibarrmodernfrontend/link/123/456' \
      -H 'DOLAPIKEY: your_key'
 
 # Obtener intervenciones del ticket 123
-curl -X GET 'http://dolibarr.com/api/index.php/dolibarmodernfrontend/ticket/123/interventions' \
+curl -X GET 'http://dolibarr.com/api/index.php/dolibarrmodernfrontend/ticket/123/interventions' \
      -H 'DOLAPIKEY: your_key'
 ```
 
@@ -114,7 +114,7 @@ curl -X GET 'http://dolibarr.com/api/index.php/dolibarmodernfrontend/ticket/123/
 
 ### Ejecutar Pruebas
 ```
-http://tu-dolibarr.com/custom/dolibarmodernfrontend/test_api.php
+http://tu-dolibarr.com/custom/dolibarrmodernfrontend/test_api.php
 ```
 
 ## 📈 Impacto y Beneficios
@@ -138,4 +138,4 @@ http://tu-dolibarr.com/custom/dolibarmodernfrontend/test_api.php
 
 ## ✅ Estado Final: **COMPLETADO Y FUNCIONAL**
 
-El módulo **dolibarmodernfrontend** está listo para producción, cumple todos los objetivos planteados y utiliza las mejores prácticas de Dolibarr al aprovechar su sistema nativo de vinculaciones.
+El módulo **dolibarrmodernfrontend** está listo para producción, cumple todos los objetivos planteados y utiliza las mejores prácticas de Dolibarr al aprovechar su sistema nativo de vinculaciones.

@@ -20,7 +20,7 @@ $email_data = array(
 );
 
 // API endpoint
-$endpoint = $dolibarr_url . '/api/index.php/dolibarmodernfrontendapi/tickets/' . $ticket_id . '/sendemail';
+$endpoint = $dolibarr_url . '/api/index.php/dolibarrmodernfrontendapi/tickets/' . $ticket_id . '/sendemail';
 
 // Headers
 $headers = array(
@@ -76,7 +76,7 @@ if ($http_code == 401) {
     echo "\nSolutions:\n";
     echo "1. Verify API key is correct\n";
     echo "2. Check user has 'Tickets' module write permissions\n";
-    echo "3. Assign dolibarmodernfrontend module permissions to user\n";
+    echo "3. Assign dolibarrmodernfrontend module permissions to user\n";
 } elseif ($http_code == 404) {
     echo "❌ Ticket not found\n";
     echo "Solution: Use a valid ticket ID that exists in the system\n";

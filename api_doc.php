@@ -2,10 +2,10 @@
 require '../../main.inc.php';
 
 // Load translation files required by the page
-$langs->loadLangs(array("dolibarmodernfrontend@dolibarmodernfrontend"));
+$langs->loadLangs(array("dolibarrmodernfrontend@dolibarrmodernfrontend"));
 
 // Access control
-if (!$user->rights->dolibarmodernfrontend->read) {
+if (!$user->rights->dolibarrmodernfrontend->read) {
     accessforbidden();
 }
 
@@ -14,14 +14,14 @@ if (!$user->rights->dolibarmodernfrontend->read) {
  */
 llxHeader("", $langs->trans("APIDocumentation"));
 
-print load_fiche_titre($langs->trans("APIDocumentation"), '', 'object_dolibarmodernfrontend@dolibarmodernfrontend');
+print load_fiche_titre($langs->trans("APIDocumentation"), '', 'object_dolibarrmodernfrontend@dolibarrmodernfrontend');
 
 print '<div class="fichecenter">';
 
 print '<h2>API Endpoints para Dolibarr Modern Frontend</h2>';
 
 print '<div class="info">';
-print '<p><strong>Base URL:</strong> /api/index.php/dolibarmodernfrontend</p>';
+print '<p><strong>Base URL:</strong> /api/index.php/dolibarrmodernfrontend</p>';
 print '<p><strong>Autenticación:</strong> API Key requerida en header DOLAPIKEY</p>';
 print '<p><strong>Sistema:</strong> Usa la tabla nativa llx_element_element de Dolibarr</p>';
 print '</div>';
@@ -38,7 +38,7 @@ print '<li><code>ticket_id</code> (int): ID del ticket</li>';
 print '<li><code>intervention_id</code> (int): ID de la intervención</li>';
 print '</ul>';
 print '<p><strong>Ejemplo:</strong></p>';
-print '<pre><code>POST /api/index.php/dolibarmodernfrontend/link/123/456
+print '<pre><code>POST /api/index.php/dolibarrmodernfrontend/link/123/456
 DOLAPIKEY: your_api_key</code></pre>';
 print '<p><strong>Nota:</strong> Usa el sistema nativo de Dolibarr (llx_element_element)</p>';
 print '</div>';
@@ -53,7 +53,7 @@ print '<li><code>ticket_id</code> (int): ID del ticket</li>';
 print '<li><code>intervention_id</code> (int): ID de la intervención</li>';
 print '</ul>';
 print '<p><strong>Ejemplo:</strong></p>';
-print '<pre><code>DELETE /api/index.php/dolibarmodernfrontend/unlink/123/456
+print '<pre><code>DELETE /api/index.php/dolibarrmodernfrontend/unlink/123/456
 DOLAPIKEY: your_api_key</code></pre>';
 print '</div>';
 
@@ -66,7 +66,7 @@ print '<ul>';
 print '<li><code>ticket_id</code> (int): ID del ticket</li>';
 print '</ul>';
 print '<p><strong>Ejemplo:</strong></p>';
-print '<pre><code>GET /api/index.php/dolibarmodernfrontend/ticket/123/interventions
+print '<pre><code>GET /api/index.php/dolibarrmodernfrontend/ticket/123/interventions
 DOLAPIKEY: your_api_key</code></pre>';
 print '<p><strong>Respuesta:</strong></p>';
 print '<pre><code>{
@@ -96,7 +96,7 @@ print '<ul>';
 print '<li><code>intervention_id</code> (int): ID de la intervención</li>';
 print '</ul>';
 print '<p><strong>Ejemplo:</strong></p>';
-print '<pre><code>GET /api/index.php/dolibarmodernfrontend/intervention/456/tickets
+print '<pre><code>GET /api/index.php/dolibarrmodernfrontend/intervention/456/tickets
 DOLAPIKEY: your_api_key</code></pre>';
 print '</div>';
 
@@ -117,7 +117,7 @@ print '<pre><code>{
     "send_to_internal": false
 }</code></pre>';
 print '<p><strong>Ejemplo:</strong></p>';
-print '<pre><code>POST /api/index.php/dolibarmodernfrontend/tickets/123/sendemail
+print '<pre><code>POST /api/index.php/dolibarrmodernfrontend/tickets/123/sendemail
 DOLAPIKEY: your_api_key
 Content-Type: application/json
 
@@ -171,7 +171,7 @@ print '<li><code>size</code> (int, opcional): Tamaño del archivo en bytes</li>'
 print '<li><code>type</code> (string, opcional): Tipo MIME del archivo</li>';
 print '</ul>';
 print '<p><strong>Ejemplo completo:</strong></p>';
-print '<pre><code>POST /api/index.php/dolibarmodernfrontend/tickets/123/sendemail
+print '<pre><code>POST /api/index.php/dolibarrmodernfrontend/tickets/123/sendemail
 DOLAPIKEY: your_api_key
 Content-Type: application/json
 
@@ -253,7 +253,7 @@ print '<ul>';
 print '<li><code>id</code> (int): ID del ticket</li>';
 print '</ul>';
 print '<p><strong>Ejemplo:</strong></p>';
-print '<pre><code>GET /api/index.php/dolibarmodernfrontend/tickets/123/contacts
+print '<pre><code>GET /api/index.php/dolibarrmodernfrontend/tickets/123/contacts
 DOLAPIKEY: your_api_key</code></pre>';
 print '<p><strong>Respuesta:</strong></p>';
 print '<pre><code>{
@@ -324,7 +324,7 @@ print '<li><code>contact_type</code> (string, requerido): Código del tipo de co
 print '<li><code>contact_source</code> (string, opcional): "external" para contactos externos o "internal" para usuarios internos. Por defecto: "external"</li>';
 print '</ul>';
 print '<p><strong>Ejemplo para contacto externo:</strong></p>';
-print '<pre><code>POST /api/index.php/dolibarmodernfrontend/tickets/123/contacts
+print '<pre><code>POST /api/index.php/dolibarrmodernfrontend/tickets/123/contacts
 DOLAPIKEY: your_api_key
 Content-Type: application/json
 
@@ -334,7 +334,7 @@ Content-Type: application/json
     "contact_source": "external"
 }</code></pre>';
 print '<p><strong>Ejemplo para usuario interno:</strong></p>';
-print '<pre><code>POST /api/index.php/dolibarmodernfrontend/tickets/123/contacts
+print '<pre><code>POST /api/index.php/dolibarrmodernfrontend/tickets/123/contacts
 DOLAPIKEY: your_api_key
 Content-Type: application/json
 
@@ -378,7 +378,7 @@ print '<li><code>contact_id</code> (int): ID del contacto o usuario a eliminar</
 print '<li><code>contact_source</code> (string): "external" para contactos externos o "internal" para usuarios internos</li>';
 print '</ul>';
 print '<p><strong>Ejemplo:</strong></p>';
-print '<pre><code>DELETE /api/index.php/dolibarmodernfrontend/tickets/123/contacts/456/external
+print '<pre><code>DELETE /api/index.php/dolibarrmodernfrontend/tickets/123/contacts/456/external
 DOLAPIKEY: your_api_key</code></pre>';
 print '<p><strong>Respuesta exitosa:</strong></p>';
 print '<pre><code>{
@@ -403,7 +403,7 @@ print '<ul>';
 print '<li><code>id</code> (int): ID del usuario</li>';
 print '</ul>';
 print '<p><strong>Ejemplo:</strong></p>';
-print '<pre><code>GET /api/index.php/dolibarmodernfrontend/user/1/documents
+print '<pre><code>GET /api/index.php/dolibarrmodernfrontend/user/1/documents
 DOLAPIKEY: your_api_key</code></pre>';
 print '<p><strong>Respuesta:</strong></p>';
 print '<pre><code>{
@@ -506,7 +506,7 @@ print '<ul>';
 print '<li><code>id</code> (int): ID de la tarea</li>';
 print '</ul>';
 print '<p><strong>Ejemplo:</strong></p>';
-print '<pre><code>GET /api/index.php/dolibarmodernfrontend/task/45/documents
+print '<pre><code>GET /api/index.php/dolibarrmodernfrontend/task/45/documents
 DOLAPIKEY: your_api_key</code></pre>';
 print '<p><strong>Respuesta:</strong></p>';
 print '<pre><code>{
@@ -574,7 +574,7 @@ print '<li><code>label</code> (string, opcional): Etiqueta del archivo para llx_
 print '<li><code>description</code> (string, opcional): Descripción del archivo</li>';
 print '</ul>';
 print '<p><strong>Ejemplo:</strong></p>';
-print '<pre><code>POST /api/index.php/dolibarmodernfrontend/task/45/documents
+print '<pre><code>POST /api/index.php/dolibarrmodernfrontend/task/45/documents
 DOLAPIKEY: your_api_key
 Content-Type: application/json
 
@@ -633,7 +633,7 @@ print '<ul>';
 print '<li><code>id</code> (int): ID del proyecto</li>';
 print '</ul>';
 print '<p><strong>Ejemplo:</strong></p>';
-print '<pre><code>GET /api/index.php/dolibarmodernfrontend/project/10/tasks/documents
+print '<pre><code>GET /api/index.php/dolibarrmodernfrontend/project/10/tasks/documents
 DOLAPIKEY: your_api_key</code></pre>';
 print '<p><strong>Respuesta:</strong></p>';
 print '<pre><code>{
@@ -705,7 +705,7 @@ print '<ul>';
 print '<li><code>id</code> (int): ID de la tarea</li>';
 print '</ul>';
 print '<p><strong>Ejemplo:</strong></p>';
-print '<pre><code>GET /api/index.php/dolibarmodernfrontend/task/45/contacts
+print '<pre><code>GET /api/index.php/dolibarrmodernfrontend/task/45/contacts
 DOLAPIKEY: your_api_key</code></pre>';
 print '<p><strong>Respuesta:</strong></p>';
 print '<pre><code>{
@@ -783,7 +783,7 @@ print '<li><code>TASKEXECUTIVE</code> - Ejecutor de la tarea (worker)</li>';
 print '<li><code>TASKMANAGER</code> - Responsable/Manager de la tarea</li>';
 print '</ul>';
 print '<p><strong>Ejemplo:</strong></p>';
-print '<pre><code>POST /api/index.php/dolibarmodernfrontend/task/45/assign
+print '<pre><code>POST /api/index.php/dolibarrmodernfrontend/task/45/assign
 DOLAPIKEY: your_api_key
 Content-Type: application/json
 
@@ -844,7 +844,7 @@ print '<li><code>contact_id</code> (int): ID del contacto o usuario a eliminar</
 print '<li><code>contact_source</code> (string): "internal" para usuarios internos o "external" para contactos externos</li>';
 print '</ul>';
 print '<p><strong>Ejemplo:</strong></p>';
-print '<pre><code>DELETE /api/index.php/dolibarmodernfrontend/task/45/contacts/121/internal
+print '<pre><code>DELETE /api/index.php/dolibarrmodernfrontend/task/45/contacts/121/internal
 DOLAPIKEY: your_api_key</code></pre>';
 print '<p><strong>Respuesta exitosa:</strong></p>';
 print '<pre><code>{
@@ -899,23 +899,23 @@ print '<li><code>private</code> (int): Filtrar por privacidad (0=pública, 1=pri
 print '</ul>';
 print '<p><strong>Ejemplos:</strong></p>';
 print '<pre><code>// Obtener todas las plantillas
-GET /api/index.php/dolibarmodernfrontend/emailtemplates
+GET /api/index.php/dolibarrmodernfrontend/emailtemplates
 DOLAPIKEY: your_api_key
 
 // Filtrar por tipo (tickets)
-GET /api/index.php/dolibarmodernfrontend/emailtemplates?type_template=ticket
+GET /api/index.php/dolibarrmodernfrontend/emailtemplates?type_template=ticket
 DOLAPIKEY: your_api_key
 
 // Filtrar por idioma (español)
-GET /api/index.php/dolibarmodernfrontend/emailtemplates?lang=es_ES
+GET /api/index.php/dolibarrmodernfrontend/emailtemplates?lang=es_ES
 DOLAPIKEY: your_api_key
 
 // Solo plantillas habilitadas
-GET /api/index.php/dolibarmodernfrontend/emailtemplates?enabled=1
+GET /api/index.php/dolibarrmodernfrontend/emailtemplates?enabled=1
 DOLAPIKEY: your_api_key
 
 // Filtros combinados
-GET /api/index.php/dolibarmodernfrontend/emailtemplates?type_template=ticket&lang=es_ES&enabled=1
+GET /api/index.php/dolibarrmodernfrontend/emailtemplates?type_template=ticket&lang=es_ES&enabled=1
 DOLAPIKEY: your_api_key</code></pre>';
 print '<p><strong>Respuesta:</strong></p>';
 print '<pre><code>{
@@ -1004,11 +1004,11 @@ print '<pre><code>{
     "usage_info": {
         "description": "Email templates can be filtered by type, language, enabled status, and privacy",
         "filter_examples": {
-            "by_type": "/api/index.php/dolibarmodernfrontend/emailtemplates?type_template=ticket",
-            "by_lang": "/api/index.php/dolibarmodernfrontend/emailtemplates?lang=es_ES",
-            "enabled_only": "/api/index.php/dolibarmodernfrontend/emailtemplates?enabled=1",
-            "public_only": "/api/index.php/dolibarmodernfrontend/emailtemplates?private=0",
-            "combined": "/api/index.php/dolibarmodernfrontend/emailtemplates?type_template=ticket&lang=es_ES&enabled=1"
+            "by_type": "/api/index.php/dolibarrmodernfrontend/emailtemplates?type_template=ticket",
+            "by_lang": "/api/index.php/dolibarrmodernfrontend/emailtemplates?lang=es_ES",
+            "enabled_only": "/api/index.php/dolibarrmodernfrontend/emailtemplates?enabled=1",
+            "public_only": "/api/index.php/dolibarrmodernfrontend/emailtemplates?private=0",
+            "combined": "/api/index.php/dolibarrmodernfrontend/emailtemplates?type_template=ticket&lang=es_ES&enabled=1"
         },
         "variables_info": "The \'variables\' field lists all template variables found in the format __VARIABLE__"
     }
@@ -1070,7 +1070,7 @@ print '</ul>';
 print '</div>';
 
 print '<div style="margin-top: 30px; padding: 15px; background-color: #e8f5e9; border-radius: 5px;">';
-print '<strong>✅ Versión del Módulo:</strong> dolibarmodernfrontend v1.2.3<br>';
+print '<strong>✅ Versión del Módulo:</strong> dolibarrmodernfrontend v1.2.3<br>';
 print '<strong>🆕 Nuevo en v1.2.3:</strong> Endpoint para obtener plantillas de correo electrónico (/emailtemplates)<br>';
 print '<strong>📅 Actualizado:</strong> ' . date('Y-m-d') . '<br>';
 print '<strong>🔗 Archivos de Prueba:</strong> ';

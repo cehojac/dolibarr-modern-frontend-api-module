@@ -2,11 +2,11 @@
 /**
  * Test script for Email Templates API endpoint
  * 
- * This script tests the new /emailtemplates endpoint of the dolibarmodernfrontend module
+ * This script tests the new /emailtemplates endpoint of the dolibarrmodernfrontend module
  * 
  * Usage:
  * 1. Configure your API credentials below
- * 2. Run from browser: http://localhost/custom/dolibarmodernfrontend/test_emailtemplates_api.php
+ * 2. Run from browser: http://localhost/custom/dolibarrmodernfrontend/test_emailtemplates_api.php
  * 3. Or run from command line: php test_emailtemplates_api.php
  */
 
@@ -15,7 +15,7 @@ $DOLIBARR_URL = 'http://localhost';  // Change to your Dolibarr URL
 $API_KEY = 'YOUR_API_KEY_HERE';      // Replace with your actual API key
 
 // API endpoint
-$endpoint = $DOLIBARR_URL . '/api/index.php/dolibarmodernfrontend/emailtemplates';
+$endpoint = $DOLIBARR_URL . '/api/index.php/dolibarrmodernfrontend/emailtemplates';
 
 echo "<h1>Test: Email Templates API Endpoint</h1>\n";
 echo "<hr>\n";

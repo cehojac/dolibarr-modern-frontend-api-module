@@ -1,15 +1,15 @@
 <?php
 require '../../main.inc.php';
 require_once DOL_DOCUMENT_ROOT.'/core/lib/admin.lib.php';
-require_once DOL_DOCUMENT_ROOT.'/custom/dolibarmodernfrontend/class/ticketinterventionlink.class.php';
+require_once DOL_DOCUMENT_ROOT.'/custom/dolibarrmodernfrontend/class/ticketinterventionlink.class.php';
 require_once DOL_DOCUMENT_ROOT.'/ticket/class/ticket.class.php';
 require_once DOL_DOCUMENT_ROOT.'/fichinter/class/fichinter.class.php';
 
 // Load translation files required by the page
-$langs->loadLangs(array("dolibarmodernfrontend@dolibarmodernfrontend"));
+$langs->loadLangs(array("dolibarrmodernfrontend@dolibarrmodernfrontend"));
 
 // Access control
-if (!$user->rights->dolibarmodernfrontend->read) {
+if (!$user->rights->dolibarrmodernfrontend->read) {
     accessforbidden();
 }
 
@@ -24,7 +24,7 @@ $object = new TicketInterventionLink($db);
  * Actions
  */
 if ($action == 'link' && $ticket_id && $intervention_id) {
-    if ($user->rights->dolibarmodernfrontend->write) {
+    if ($user->rights->dolibarrmodernfrontend->write) {
         if (!$object->existsLink($ticket_id, $intervention_id)) {
             $result = $object->linkTicketIntervention($ticket_id, $intervention_id, $user);
             if ($result > 0) {
@@ -39,7 +39,7 @@ if ($action == 'link' && $ticket_id && $intervention_id) {
 }
 
 if ($action == 'unlink' && $ticket_id && $intervention_id) {
-    if ($user->rights->dolibarmodernfrontend->delete) {
+    if ($user->rights->dolibarrmodernfrontend->delete) {
         $result = $object->unlinkTicketIntervention($ticket_id, $intervention_id);
         if ($result > 0) {
             setEventMessages($langs->trans("LinkRemovedSuccessfully"), null, 'mesgs');
@@ -55,7 +55,7 @@ if ($action == 'unlink' && $ticket_id && $intervention_id) {
 
 llxHeader("", $langs->trans("InterventionTicketLinks"));
 
-print load_fiche_titre($langs->trans("InterventionTicketLinks"), '', 'object_dolibarmodernfrontend@dolibarmodernfrontend');
+print load_fiche_titre($langs->trans("InterventionTicketLinks"), '', 'object_dolibarrmodernfrontend@dolibarrmodernfrontend');
 
 print '<div class="fichecenter">';
 
@@ -103,7 +103,7 @@ if (is_array($links) && count($links) > 0) {
         print '<td>'.$link['intervention_ref'].' - '.$link['intervention_label'].'</td>';
         print '<td>'.$link['client_name'].'</td>';
         print '<td>';
-        if ($user->rights->dolibarmodernfrontend->delete) {
+        if ($user->rights->dolibarrmodernfrontend->delete) {
             print '<a href="'.$_SERVER["PHP_SELF"].'?action=unlink&ticket_id='.$link['ticket_id'].'&intervention_id='.$link['intervention_id'].'&token='.newToken().'" class="button buttonDelete">';
             print $langs->trans("Unlink").'</a>';
         }

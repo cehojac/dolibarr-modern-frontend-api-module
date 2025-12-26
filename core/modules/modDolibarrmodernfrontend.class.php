@@ -1,7 +1,7 @@
 <?php
 include_once DOL_DOCUMENT_ROOT.'/core/modules/DolibarrModules.class.php';
 
-class modDolibarmodernfrontend extends DolibarrModules
+class modDolibarrmodernfrontend extends DolibarrModules
 {
     public function __construct($db)
     {
@@ -13,7 +13,7 @@ class modDolibarmodernfrontend extends DolibarrModules
         $this->numero = 105003;
         
         // Key text used to identify module (for permissions, menus, etc...)
-        $this->rights_class = 'dolibarmodernfrontend';
+        $this->rights_class = 'dolibarrmodernfrontend';
         
         // Family can be 'base' (core modules),'crm','financial','hr','projects','products','ecm','technic' (transverse modules),'interface' (interface modules),'other','...'
         $this->family = "interface";
@@ -21,10 +21,10 @@ class modDolibarmodernfrontend extends DolibarrModules
         // Module position in the family on 2 digits ('01', '10', '20', ...)
         $this->module_position = '90';
         
-        // Module label (no space allowed), used if translation string 'ModuleDolibarmodernfrontendName' not found
+        // Module label (no space allowed), used if translation string 'ModuleDolibarrmodernfrontendName' not found
         $this->name = preg_replace('/^mod/i', '', get_class($this));
         
-        // Module description, used if translation string 'ModuleDolibarmodernfrontendDesc' not found
+        // Module description, used if translation string 'ModuleDolibarrmodernfrontendDesc' not found
         $this->description = "API moderna para gestión de intervenciones y tickets";
         // Used only if file README.md and README-LL.md not found.
         $this->descriptionlong = "Módulo que proporciona una API moderna para vincular intervenciones con tickets y consultar datos relacionados";
@@ -74,10 +74,10 @@ class modDolibarmodernfrontend extends DolibarrModules
         );
         
         // Data directories to create when module is enabled.
-        $this->dirs = array("/dolibarmodernfrontend");
+        $this->dirs = array("/dolibarrmodernfrontend");
         
-        // Config pages. Put here list of php page, stored into dolibarmodernfrontend/admin directory, to use to setup module.
-        $this->config_page_url = array("dolibarmodernfrontend_setup.php@dolibarmodernfrontend");
+        // Config pages. Put here list of php page, stored into dolibarrmodernfrontend/admin directory, to use to setup module.
+        $this->config_page_url = array("dolibarrmodernfrontend_setup.php@dolibarrmodernfrontend");
         
         // Dependencies
         // A condition to hide module
@@ -88,7 +88,7 @@ class modDolibarmodernfrontend extends DolibarrModules
         $this->conflictwith = array(); // List of module class names as string this module is in conflict with
         
         // The language file dedicated to your module
-        $this->langfiles = array("dolibarmodernfrontend@dolibarmodernfrontend");
+        $this->langfiles = array("dolibarrmodernfrontend@dolibarrmodernfrontend");
         
         // Prerequisites
         $this->phpmin = array(7, 0); // Minimum version of PHP required by module
@@ -123,28 +123,28 @@ class modDolibarmodernfrontend extends DolibarrModules
         // Permiso de lectura
         $this->rights[$r][0] = $this->numero + $r;
         $this->rights[$r][1] = 'Leer vinculaciones de intervenciones y tickets';
-        $this->rights[$r][4] = 'dolibarmodernfrontend';
+        $this->rights[$r][4] = 'dolibarrmodernfrontend';
         $this->rights[$r][5] = 'read';
         $r++;
 
         // Permiso de escritura
         $this->rights[$r][0] = $this->numero + $r;
         $this->rights[$r][1] = 'Crear/modificar vinculaciones de intervenciones y tickets';
-        $this->rights[$r][4] = 'dolibarmodernfrontend';
+        $this->rights[$r][4] = 'dolibarrmodernfrontend';
         $this->rights[$r][5] = 'write';
         $r++;
 
         // Permiso de eliminación
         $this->rights[$r][0] = $this->numero + $r;
         $this->rights[$r][1] = 'Eliminar vinculaciones de intervenciones y tickets';
-        $this->rights[$r][4] = 'dolibarmodernfrontend';
+        $this->rights[$r][4] = 'dolibarrmodernfrontend';
         $this->rights[$r][5] = 'delete';
         $r++;
 
         // Permiso de administración
         $this->rights[$r][0] = $this->numero + $r;
         $this->rights[$r][1] = 'Administrar módulo de frontend moderno';
-        $this->rights[$r][4] = 'dolibarmodernfrontend';
+        $this->rights[$r][4] = 'dolibarrmodernfrontend';
         $this->rights[$r][5] = 'admin';
         $r++;
 
@@ -157,9 +157,9 @@ class modDolibarmodernfrontend extends DolibarrModules
         $this->menu[$r]['type'] = 'left';
         $this->menu[$r]['titre'] = 'Frontend Moderno';
         $this->menu[$r]['mainmenu'] = 'tools';
-        $this->menu[$r]['leftmenu'] = 'dolibarmodernfrontend';
-        $this->menu[$r]['url'] = '/custom/dolibarmodernfrontend/interventions_list.php';
-        $this->menu[$r]['langs'] = 'dolibarmodernfrontend@dolibarmodernfrontend';
+        $this->menu[$r]['leftmenu'] = 'dolibarrmodernfrontend';
+        $this->menu[$r]['url'] = '/custom/dolibarrmodernfrontend/interventions_list.php';
+        $this->menu[$r]['langs'] = 'dolibarrmodernfrontend@dolibarrmodernfrontend';
         $this->menu[$r]['position'] = 1100;
         $this->menu[$r]['enabled'] = 1;
         $this->menu[$r]['perms'] = '1';
@@ -168,13 +168,13 @@ class modDolibarmodernfrontend extends DolibarrModules
         $r++;
 
         // Submenú: Gestión de vinculaciones
-        $this->menu[$r]['fk_menu'] = 'fk_mainmenu=tools,fk_leftmenu=dolibarmodernfrontend';
+        $this->menu[$r]['fk_menu'] = 'fk_mainmenu=tools,fk_leftmenu=dolibarrmodernfrontend';
         $this->menu[$r]['type'] = 'left';
         $this->menu[$r]['titre'] = 'Gestión de Vinculaciones';
         $this->menu[$r]['mainmenu'] = 'tools';
-        $this->menu[$r]['leftmenu'] = 'dolibarmodernfrontend_links';
-        $this->menu[$r]['url'] = '/custom/dolibarmodernfrontend/interventions_list.php';
-        $this->menu[$r]['langs'] = 'dolibarmodernfrontend@dolibarmodernfrontend';
+        $this->menu[$r]['leftmenu'] = 'dolibarrmodernfrontend_links';
+        $this->menu[$r]['url'] = '/custom/dolibarrmodernfrontend/interventions_list.php';
+        $this->menu[$r]['langs'] = 'dolibarrmodernfrontend@dolibarrmodernfrontend';
         $this->menu[$r]['position'] = 1101;
         $this->menu[$r]['enabled'] = 1;
         $this->menu[$r]['perms'] = '1';
@@ -183,13 +183,13 @@ class modDolibarmodernfrontend extends DolibarrModules
         $r++;
 
         // Submenú: API Documentation
-        $this->menu[$r]['fk_menu'] = 'fk_mainmenu=tools,fk_leftmenu=dolibarmodernfrontend';
+        $this->menu[$r]['fk_menu'] = 'fk_mainmenu=tools,fk_leftmenu=dolibarrmodernfrontend';
         $this->menu[$r]['type'] = 'left';
         $this->menu[$r]['titre'] = 'API Documentation';
         $this->menu[$r]['mainmenu'] = 'tools';
-        $this->menu[$r]['leftmenu'] = 'dolibarmodernfrontend_api';
-        $this->menu[$r]['url'] = '/custom/dolibarmodernfrontend/api_doc.php';
-        $this->menu[$r]['langs'] = 'dolibarmodernfrontend@dolibarmodernfrontend';
+        $this->menu[$r]['leftmenu'] = 'dolibarrmodernfrontend_api';
+        $this->menu[$r]['url'] = '/custom/dolibarrmodernfrontend/api_doc.php';
+        $this->menu[$r]['langs'] = 'dolibarrmodernfrontend@dolibarrmodernfrontend';
         $this->menu[$r]['position'] = 1102;
         $this->menu[$r]['enabled'] = 1;
         $this->menu[$r]['perms'] = '1';

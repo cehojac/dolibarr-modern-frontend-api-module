@@ -1,6 +1,6 @@
 <?php
 /**
- * Test file for Contacts API endpoints in dolibarmodernfrontend module
+ * Test file for Contacts API endpoints in dolibarrmodernfrontend module
  * 
  * This file tests the new contact management endpoints:
  * - GET /tickets/{id}/contacts
@@ -14,10 +14,10 @@
 require '../../main.inc.php';
 
 // Load translation files required by the page
-$langs->loadLangs(array("dolibarmodernfrontend@dolibarmodernfrontend"));
+$langs->loadLangs(array("dolibarrmodernfrontend@dolibarrmodernfrontend"));
 
 // Access control
-if (!$user->rights->dolibarmodernfrontend->read && !$user->rights->ticket->read) {
+if (!$user->rights->dolibarrmodernfrontend->read && !$user->rights->ticket->read) {
     accessforbidden();
 }
 
@@ -26,7 +26,7 @@ if (!$user->rights->dolibarmodernfrontend->read && !$user->rights->ticket->read)
  */
 llxHeader("", $langs->trans("ContactsAPITest"));
 
-print load_fiche_titre("Test de API de Contactos - dolibarmodernfrontend v1.2.2", '', 'object_dolibarmodernfrontend@dolibarmodernfrontend');
+print load_fiche_titre("Test de API de Contactos - dolibarrmodernfrontend v1.2.2", '', 'object_dolibarrmodernfrontend@dolibarrmodernfrontend');
 
 print '<div class="fichecenter">';
 
@@ -35,8 +35,8 @@ print '<h2>🔧 1. Verificación del Sistema</h2>';
 print '<div class="info">';
 
 // Check module activation
-$module_enabled = !empty($conf->dolibarmodernfrontend->enabled);
-print '<p><strong>Módulo dolibarmodernfrontend:</strong> ' . ($module_enabled ? '✅ Activado' : '❌ Desactivado') . '</p>';
+$module_enabled = !empty($conf->dolibarrmodernfrontend->enabled);
+print '<p><strong>Módulo dolibarrmodernfrontend:</strong> ' . ($module_enabled ? '✅ Activado' : '❌ Desactivado') . '</p>';
 
 // Check API activation
 $api_enabled = !empty($conf->api->enabled);
@@ -47,7 +47,7 @@ $db_ok = ($db && $db->connected);
 print '<p><strong>Conexión BD:</strong> ' . ($db_ok ? '✅ Conectada' : '❌ Error') . '</p>';
 
 // Check permissions
-$has_module_perms = isset($user->rights->dolibarmodernfrontend) && $user->rights->dolibarmodernfrontend->read;
+$has_module_perms = isset($user->rights->dolibarrmodernfrontend) && $user->rights->dolibarrmodernfrontend->read;
 $has_ticket_perms = isset($user->rights->ticket) && $user->rights->ticket->read;
 print '<p><strong>Permisos módulo:</strong> ' . ($has_module_perms ? '✅ Sí' : '❌ No') . '</p>';
 print '<p><strong>Permisos tickets:</strong> ' . ($has_ticket_perms ? '✅ Sí' : '❌ No') . '</p>';
@@ -60,10 +60,10 @@ print '<h2>🔍 2. Verificación de Clases</h2>';
 print '<div class="info">';
 
 try {
-    require_once DOL_DOCUMENT_ROOT.'/custom/dolibarmodernfrontend/class/api_dolibarmodernfrontend.class.php';
+    require_once DOL_DOCUMENT_ROOT.'/custom/dolibarrmodernfrontend/class/api_dolibarrmodernfrontend.class.php';
     print '<p><strong>Clase API:</strong> ✅ Cargada correctamente</p>';
     
-    $api = new DolibarmodernfrontendApi();
+    $api = new DolibarrmodernfrontendApi();
     print '<p><strong>Instanciación API:</strong> ✅ Exitosa</p>';
     
     // Check if new methods exist
@@ -195,7 +195,7 @@ print '</div>';
 print '<h2>🚀 6. Endpoints de Contactos Disponibles</h2>';
 print '<div class="info">';
 
-$base_url = dol_buildpath('/api/index.php/dolibarmodernfrontend', 2);
+$base_url = dol_buildpath('/api/index.php/dolibarrmodernfrontend', 2);
 
 print '<h3>GET - Obtener Contactos</h3>';
 print '<p><strong>URL:</strong> <code>GET ' . $base_url . '/tickets/{id}/contacts</code></p>';
@@ -278,7 +278,7 @@ print '</ul>';
 
 print '<h3>Verificaciones</h3>';
 print '<ul>';
-print '<li>✅ Módulo dolibarmodernfrontend activado</li>';
+print '<li>✅ Módulo dolibarrmodernfrontend activado</li>';
 print '<li>✅ API REST activada en Dolibarr</li>';
 print '<li>✅ Usuario con permisos adecuados</li>';
 print '<li>✅ API key válida configurada</li>';
@@ -295,13 +295,13 @@ $all_ok = $module_enabled && $api_enabled && $db_ok && ($has_module_perms || $ha
 
 if ($all_ok) {
     print '<p><strong>Estado general:</strong> ✅ Todo correcto - Los endpoints de contactos están listos para usar</p>';
-    print '<p><strong>Versión:</strong> dolibarmodernfrontend v1.2.2</p>';
+    print '<p><strong>Versión:</strong> dolibarrmodernfrontend v1.2.2</p>';
     print '<p><strong>Nuevos endpoints:</strong> 3 endpoints de gestión de contactos implementados</p>';
     print '<p><strong>Sistema:</strong> Usa métodos nativos de Dolibarr (add_contact, delete_contact)</p>';
 } else {
     print '<p><strong>Estado general:</strong> ❌ Hay problemas que resolver antes de usar la API</p>';
     
-    if (!$module_enabled) print '<p>- Activar el módulo dolibarmodernfrontend</p>';
+    if (!$module_enabled) print '<p>- Activar el módulo dolibarrmodernfrontend</p>';
     if (!$api_enabled) print '<p>- Activar la API REST en Dolibarr</p>';
     if (!$db_ok) print '<p>- Verificar conexión a la base de datos</p>';
     if (!$has_module_perms && !$has_ticket_perms) print '<p>- Configurar permisos de usuario</p>';

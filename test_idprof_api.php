@@ -17,7 +17,7 @@ echo "Test 1: GET /idprofvalidatorurl (país de la empresa)\n";
 echo "-----------------------------------------------------------\n";
 
 $ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, $dolibarr_url . '/api/index.php/dolibarmodernfrontend/idprofvalidatorurl');
+curl_setopt($ch, CURLOPT_URL, $dolibarr_url . '/api/index.php/dolibarrmodernfrontend/idprofvalidatorurl');
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_HTTPHEADER, array(
     'DOLAPIKEY: ' . $api_key,
@@ -109,7 +109,7 @@ echo "\n\nTest 2: GET /idprofvalidatorurl?all=1 (todos los países)\n";
 echo "-----------------------------------------------------------\n";
 
 $ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, $dolibarr_url . '/api/index.php/dolibarmodernfrontend/idprofvalidatorurl?all=1');
+curl_setopt($ch, CURLOPT_URL, $dolibarr_url . '/api/index.php/dolibarrmodernfrontend/idprofvalidatorurl?all=1');
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_HTTPHEADER, array(
     'DOLAPIKEY: ' . $api_key,
@@ -136,7 +136,7 @@ echo "\n\nTest 3: GET /idprofvalidatorurl?country=ES (España)\n";
 echo "-----------------------------------------------------------\n";
 
 $ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, $dolibarr_url . '/api/index.php/dolibarmodernfrontend/idprofvalidatorurl?country=ES');
+curl_setopt($ch, CURLOPT_URL, $dolibarr_url . '/api/index.php/dolibarrmodernfrontend/idprofvalidatorurl?country=ES');
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_HTTPHEADER, array(
     'DOLAPIKEY: ' . $api_key,
@@ -170,7 +170,7 @@ echo "\n\nTest 4: GET /idprofvalidatorurl?country=US (país no disponible)\n";
 echo "-----------------------------------------------------------\n";
 
 $ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, $dolibarr_url . '/api/index.php/dolibarmodernfrontend/idprofvalidatorurl?country=US');
+curl_setopt($ch, CURLOPT_URL, $dolibarr_url . '/api/index.php/dolibarrmodernfrontend/idprofvalidatorurl?country=US');
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_HTTPHEADER, array(
     'DOLAPIKEY: ' . $api_key,
@@ -195,7 +195,7 @@ if ($http_code == 404) {
 echo "\n\n=== Ejemplo de uso en JavaScript ===\n\n";
 echo <<<'JAVASCRIPT'
 // 1. Obtener URLs del país de la empresa (por defecto)
-fetch('http://localhost:8080/api/index.php/dolibarmodernfrontend/idprofvalidatorurl', {
+fetch('http://localhost:8080/api/index.php/dolibarrmodernfrontend/idprofvalidatorurl', {
     headers: {
         'DOLAPIKEY': 'TU_API_KEY_AQUI'
     }
@@ -218,7 +218,7 @@ fetch('http://localhost:8080/api/index.php/dolibarmodernfrontend/idprofvalidator
 .catch(error => console.error('Error:', error));
 
 // 2. Obtener todos los países
-fetch('http://localhost:8080/api/index.php/dolibarmodernfrontend/idprofvalidatorurl?all=1', {
+fetch('http://localhost:8080/api/index.php/dolibarrmodernfrontend/idprofvalidatorurl?all=1', {
     headers: {
         'DOLAPIKEY': 'TU_API_KEY_AQUI'
     }
@@ -231,7 +231,7 @@ fetch('http://localhost:8080/api/index.php/dolibarmodernfrontend/idprofvalidator
 });
 
 // 3. Obtener país específico
-fetch('http://localhost:8080/api/index.php/dolibarmodernfrontend/idprofvalidatorurl?country=ES', {
+fetch('http://localhost:8080/api/index.php/dolibarrmodernfrontend/idprofvalidatorurl?country=ES', {
     headers: {
         'DOLAPIKEY': 'TU_API_KEY_AQUI'
     }
@@ -251,8 +251,8 @@ fetch('http://localhost:8080/api/index.php/dolibarmodernfrontend/idprofvalidator
 async function getValidatorUrl(countryCode, idProf) {
     // Si no se especifica país, usa el de la empresa
     const url = countryCode 
-        ? `http://localhost:8080/api/index.php/dolibarmodernfrontend/idprofvalidatorurl?country=${countryCode}`
-        : 'http://localhost:8080/api/index.php/dolibarmodernfrontend/idprofvalidatorurl';
+        ? `http://localhost:8080/api/index.php/dolibarrmodernfrontend/idprofvalidatorurl?country=${countryCode}`
+        : 'http://localhost:8080/api/index.php/dolibarrmodernfrontend/idprofvalidatorurl';
     
     const response = await fetch(url, {
         headers: { 'DOLAPIKEY': 'TU_API_KEY_AQUI' }
@@ -287,23 +287,23 @@ echo "\n\n=== Ejemplo de uso en cURL ===\n\n";
 echo <<<'CURL'
 # 1. Obtener URLs del país de la empresa (por defecto)
 curl -X GET \
-  "http://localhost:8080/api/index.php/dolibarmodernfrontend/idprofvalidatorurl" \
+  "http://localhost:8080/api/index.php/dolibarrmodernfrontend/idprofvalidatorurl" \
   -H "DOLAPIKEY: TU_API_KEY_AQUI" \
   -H "Content-Type: application/json"
 
 # 2. Obtener todos los países
 curl -X GET \
-  "http://localhost:8080/api/index.php/dolibarmodernfrontend/idprofvalidatorurl?all=1" \
+  "http://localhost:8080/api/index.php/dolibarrmodernfrontend/idprofvalidatorurl?all=1" \
   -H "DOLAPIKEY: TU_API_KEY_AQUI"
 
 # 3. Obtener país específico (España)
 curl -X GET \
-  "http://localhost:8080/api/index.php/dolibarmodernfrontend/idprofvalidatorurl?country=ES" \
+  "http://localhost:8080/api/index.php/dolibarrmodernfrontend/idprofvalidatorurl?country=ES" \
   -H "DOLAPIKEY: TU_API_KEY_AQUI"
 
 # 4. Procesar respuesta con jq (opcional)
 curl -X GET \
-  "http://localhost:8080/api/index.php/dolibarmodernfrontend/idprofvalidatorurl?country=FR" \
+  "http://localhost:8080/api/index.php/dolibarrmodernfrontend/idprofvalidatorurl?country=FR" \
   -H "DOLAPIKEY: TU_API_KEY_AQUI" \
   | jq '.validator_urls.FR.idprof1.url_template'
 

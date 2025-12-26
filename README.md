@@ -2,7 +2,7 @@
 
 ## Descripción
 
-El módulo **dolibarmodernfrontend** proporciona una API moderna para la gestión de vinculaciones entre tickets e intervenciones en Dolibarr usando el **sistema nativo de vinculaciones** (`llx_element_element`). Permite crear, consultar y eliminar relaciones entre estos elementos de manera programática sin necesidad de tablas adicionales.
+El módulo **dolibarrmodernfrontend** proporciona una API moderna para la gestión de vinculaciones entre tickets e intervenciones en Dolibarr usando el **sistema nativo de vinculaciones** (`llx_element_element`). Permite crear, consultar y eliminar relaciones entre estos elementos de manera programática sin necesidad de tablas adicionales.
 
 ## Características
 
@@ -18,7 +18,7 @@ El módulo **dolibarmodernfrontend** proporciona una API moderna para la gestió
 
 ## Instalación
 
-1. Copiar el módulo en el directorio `custom/dolibarmodernfrontend/`
+1. Copiar el módulo en el directorio `custom/dolibarrmodernfrontend/`
 2. Activar el módulo desde el panel de administración de Dolibarr
 3. Configurar los permisos de usuario según sea necesario
 
@@ -27,18 +27,18 @@ El módulo **dolibarmodernfrontend** proporciona una API moderna para la gestió
 ## Estructura del Módulo
 
 ```
-dolibarmodernfrontend/
+dolibarrmodernfrontend/
 ├── admin/
-│   └── dolibarmodernfrontend_setup.php    # Configuración del módulo
+│   └── dolibarrmodernfrontend_setup.php    # Configuración del módulo
 ├── class/
 │   ├── ticketinterventionlink.class.php   # Clase principal (usa llx_element_element)
-│   └── api_dolibarmodernfrontend.class.php # API REST
+│   └── api_dolibarrmodernfrontend.class.php # API REST
 ├── core/
 │   └── modules/
-│       └── modDolibarmodernfrontend.class.php # Definición del módulo
+│       └── modDolibarrmodernfrontend.class.php # Definición del módulo
 ├── langs/
 │   └── es_ES/
-│       └── dolibarmodernfrontend.lang      # Traducciones en español
+│       └── dolibarrmodernfrontend.lang      # Traducciones en español
 ├── api_doc.php                             # Documentación de la API
 ├── interventions_list.php                  # Interfaz de gestión
 └── README.md                               # Este archivo
@@ -48,7 +48,7 @@ dolibarmodernfrontend/
 
 ### Base URL
 ```
-/api/index.php/dolibarmodernfrontend
+/api/index.php/dolibarrmodernfrontend
 ```
 
 ### Autenticación
@@ -104,7 +104,7 @@ Permite crear un mensaje en un ticket especificando qué contacto lo crea. Útil
 **Ejemplo de uso:**
 ```bash
 curl -X POST \
-  'http://tu-dolibarr.com/api/index.php/dolibarmodernfrontend/tickets/123/newmessage' \
+  'http://tu-dolibarr.com/api/index.php/dolibarrmodernfrontend/tickets/123/newmessage' \
   -H 'DOLAPIKEY: tu_api_key' \
   -H 'Content-Type: application/x-www-form-urlencoded' \
   -d 'message=Mensaje de prueba&contact_id=115&private=0&send_email=0'
@@ -215,7 +215,7 @@ Acceder a `Herramientas > Frontend Moderno > Configuración` para ajustar las op
 
 ```bash
 curl -X POST \
-  'http://tu-dolibarr.com/api/index.php/dolibarmodernfrontend/link/123/456' \
+  'http://tu-dolibarr.com/api/index.php/dolibarrmodernfrontend/link/123/456' \
   -H 'DOLAPIKEY: tu_api_key' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -228,7 +228,7 @@ curl -X POST \
 
 ```bash
 curl -X GET \
-  'http://tu-dolibarr.com/api/index.php/dolibarmodernfrontend/ticket/123/interventions' \
+  'http://tu-dolibarr.com/api/index.php/dolibarrmodernfrontend/ticket/123/interventions' \
   -H 'DOLAPIKEY: tu_api_key'
 ```
 

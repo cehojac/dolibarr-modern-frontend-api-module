@@ -1,6 +1,6 @@
 <?php
 /**
- * Test file for User Documents API endpoint in dolibarmodernfrontend module
+ * Test file for User Documents API endpoint in dolibarrmodernfrontend module
  * 
  * This file tests the new ECM documents endpoint:
  * - GET /user/{id}/documents
@@ -12,10 +12,10 @@
 require '../../main.inc.php';
 
 // Load translation files required by the page
-$langs->loadLangs(array("dolibarmodernfrontend@dolibarmodernfrontend", "ecm"));
+$langs->loadLangs(array("dolibarrmodernfrontend@dolibarrmodernfrontend", "ecm"));
 
 // Access control
-if (!$user->rights->dolibarmodernfrontend->read && !$user->rights->ecm->read) {
+if (!$user->rights->dolibarrmodernfrontend->read && !$user->rights->ecm->read) {
     accessforbidden();
 }
 
@@ -24,7 +24,7 @@ if (!$user->rights->dolibarmodernfrontend->read && !$user->rights->ecm->read) {
  */
 llxHeader("", $langs->trans("UserDocumentsAPITest"));
 
-print load_fiche_titre("Test de API de Documentos de Usuario - dolibarmodernfrontend v1.2.3", '', 'object_dolibarmodernfrontend@dolibarmodernfrontend');
+print load_fiche_titre("Test de API de Documentos de Usuario - dolibarrmodernfrontend v1.2.3", '', 'object_dolibarrmodernfrontend@dolibarrmodernfrontend');
 
 print '<div class="fichecenter">';
 
@@ -33,8 +33,8 @@ print '<h2>🔧 1. Verificación del Sistema</h2>';
 print '<div class="info">';
 
 // Check module activation
-$module_enabled = !empty($conf->dolibarmodernfrontend->enabled);
-print '<p><strong>Módulo dolibarmodernfrontend:</strong> ' . ($module_enabled ? '✅ Activado' : '❌ Desactivado') . '</p>';
+$module_enabled = !empty($conf->dolibarrmodernfrontend->enabled);
+print '<p><strong>Módulo dolibarrmodernfrontend:</strong> ' . ($module_enabled ? '✅ Activado' : '❌ Desactivado') . '</p>';
 
 // Check ECM module
 $ecm_enabled = !empty($conf->ecm->enabled);
@@ -49,7 +49,7 @@ $db_ok = ($db && $db->connected);
 print '<p><strong>Conexión BD:</strong> ' . ($db_ok ? '✅ Conectada' : '❌ Error') . '</p>';
 
 // Check permissions
-$has_module_perms = isset($user->rights->dolibarmodernfrontend) && $user->rights->dolibarmodernfrontend->read;
+$has_module_perms = isset($user->rights->dolibarrmodernfrontend) && $user->rights->dolibarrmodernfrontend->read;
 $has_ecm_perms = isset($user->rights->ecm) && $user->rights->ecm->read;
 print '<p><strong>Permisos módulo:</strong> ' . ($has_module_perms ? '✅ Sí' : '❌ No') . '</p>';
 print '<p><strong>Permisos ECM:</strong> ' . ($has_ecm_perms ? '✅ Sí' : '❌ No') . '</p>';
@@ -62,10 +62,10 @@ print '<h2>🔍 2. Verificación de Clases</h2>';
 print '<div class="info">';
 
 try {
-    require_once DOL_DOCUMENT_ROOT.'/custom/dolibarmodernfrontend/class/api_dolibarmodernfrontend.class.php';
+    require_once DOL_DOCUMENT_ROOT.'/custom/dolibarrmodernfrontend/class/api_dolibarrmodernfrontend.class.php';
     print '<p><strong>Clase API:</strong> ✅ Cargada correctamente</p>';
     
-    $api = new DolibarmodernfrontendApi();
+    $api = new DolibarrmodernfrontendApi();
     print '<p><strong>Instanciación API:</strong> ✅ Exitosa</p>';
     
     // Check if new method exists
@@ -237,7 +237,7 @@ print '</div>';
 print '<h2>🚀 7. Endpoint de Documentos de Usuario</h2>';
 print '<div class="info">';
 
-$base_url = dol_buildpath('/api/index.php/dolibarmodernfrontend', 2);
+$base_url = dol_buildpath('/api/index.php/dolibarrmodernfrontend', 2);
 
 print '<h3>GET - Obtener Documentos del Usuario</h3>';
 print '<p><strong>URL:</strong> <code>GET ' . $base_url . '/user/{id}/documents</code></p>';
@@ -311,17 +311,17 @@ print '<div class="info">';
 
 print '<h3>Errores Comunes</h3>';
 print '<ul>';
-print '<li><strong>401 Unauthorized:</strong> Verificar API key y permisos ECM/dolibarmodernfrontend</li>';
+print '<li><strong>401 Unauthorized:</strong> Verificar API key y permisos ECM/dolibarrmodernfrontend</li>';
 print '<li><strong>404 Not Found:</strong> Verificar que el usuario existe</li>';
 print '<li><strong>Sin directorios:</strong> El usuario debe crear directorios en ECM primero</li>';
 print '</ul>';
 
 print '<h3>Verificaciones</h3>';
 print '<ul>';
-print '<li>✅ Módulo dolibarmodernfrontend activado</li>';
+print '<li>✅ Módulo dolibarrmodernfrontend activado</li>';
 print '<li>✅ Módulo ECM activado (recomendado)</li>';
 print '<li>✅ API REST activada en Dolibarr</li>';
-print '<li>✅ Usuario con permisos ECM o dolibarmodernfrontend</li>';
+print '<li>✅ Usuario con permisos ECM o dolibarrmodernfrontend</li>';
 print '<li>✅ Directorios manuales creados en ECM</li>';
 print '</ul>';
 
@@ -343,7 +343,7 @@ $all_ok = $module_enabled && $api_enabled && $db_ok && ($has_module_perms || $ha
 
 if ($all_ok) {
     print '<p><strong>Estado general:</strong> ✅ Todo correcto - El endpoint de documentos está listo para usar</p>';
-    print '<p><strong>Versión:</strong> dolibarmodernfrontend v1.2.3</p>';
+    print '<p><strong>Versión:</strong> dolibarrmodernfrontend v1.2.3</p>';
     print '<p><strong>Nuevo endpoint:</strong> GET /user/{id}/documents implementado</p>';
     print '<p><strong>Sistema:</strong> Usa tablas nativas ECM (llx_ecm_directories, llx_ecm_files)</p>';
     print '<p><strong>Características:</strong></p>';
@@ -356,10 +356,10 @@ if ($all_ok) {
 } else {
     print '<p><strong>Estado general:</strong> ❌ Hay problemas que resolver antes de usar la API</p>';
     
-    if (!$module_enabled) print '<p>- Activar el módulo dolibarmodernfrontend</p>';
+    if (!$module_enabled) print '<p>- Activar el módulo dolibarrmodernfrontend</p>';
     if (!$api_enabled) print '<p>- Activar la API REST en Dolibarr</p>';
     if (!$db_ok) print '<p>- Verificar conexión a la base de datos</p>';
-    if (!$has_module_perms && !$has_ecm_perms) print '<p>- Configurar permisos ECM o dolibarmodernfrontend</p>';
+    if (!$has_module_perms && !$has_ecm_perms) print '<p>- Configurar permisos ECM o dolibarrmodernfrontend</p>';
 }
 
 print '</div>';
